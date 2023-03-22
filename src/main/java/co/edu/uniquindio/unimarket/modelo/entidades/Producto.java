@@ -17,12 +17,14 @@ public class Producto implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     private int codigo;
+
+    private String nombre;
     private Categoria categoria;
     private int unidades;
     private LocalDate fechaLimite;
     private LocalDate fechaCreado;
     private boolean estado;
     private String descripcion;
-    private double precio;
+    private float precio;
 
 }
