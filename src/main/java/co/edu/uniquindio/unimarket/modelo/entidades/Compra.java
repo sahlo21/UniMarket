@@ -28,6 +28,7 @@ public class Compra implements Serializable {
     private float valorTotal;
     @OneToMany(mappedBy="detalleCompra")
     private List<DetalleCompra> detalleCompraList;
+    //ola
 
 
 }
