@@ -1,8 +1,5 @@
 package co.edu.uniquindio.unimarket.modelo.entidades;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -17,8 +14,10 @@ import java.time.LocalDate;
 public class Comentario implements Serializable {
     @Id
     @EqualsAndHashCode.Include
+    @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
+    @Column(nullable = false, length = 250)
     private String observacion;
     private LocalDate fechaCreacion;
 }

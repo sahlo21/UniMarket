@@ -1,6 +1,5 @@
 package co.edu.uniquindio.unimarket.modelo.entidades;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
@@ -15,6 +14,9 @@ import java.io.Serializable;
 public class Imagen implements Serializable {
     @Id
     @EqualsAndHashCode.Include
+    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idImagen;
+    @Column(nullable = false)
     private String ruta;
 }

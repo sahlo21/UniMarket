@@ -4,30 +4,23 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Compra implements Serializable {
+public class DetalleCompra implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
     @Column(nullable = false)
-    private LocalDate fechaCreacion;
-    @Enumerated(EnumType.STRING)
+    private float precio;
     @Column(nullable = false)
-    private MedioPago medioPago;
-    @Column(nullable = false)
-    private float valorTotal;
-    @OneToMany(mappedBy="detalleCompra")
-    private List<DetalleCompra> detalleCompraList;
+    private int unidades;
 
-
+    @ManyToOne
+    private DetalleCompra detalleCompra;
 }

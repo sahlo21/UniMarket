@@ -1,10 +1,10 @@
 package co.edu.uniquindio.unimarket.modelo.entidades;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -12,9 +12,17 @@ import java.io.Serializable;
 @NoArgsConstructor
 @ToString
 public class Usuario extends Persona implements Serializable  {
-
+    @Column(nullable = true, length = 10)
+    private String telefono;
+    @Column(nullable = false, length = 100)
     private String direccion;
-    private String contrasena;
+    @OneToMany(mappedBy="producto")
+    private List<Producto> productoList;
+    @OneToMany(mappedBy="producto")
+    private List<Producto> favoritosList;
+    @OneToMany(mappedBy="compra")
+    private List<Compra> compraList;
+
 
 
 

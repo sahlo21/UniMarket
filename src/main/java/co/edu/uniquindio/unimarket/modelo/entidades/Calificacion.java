@@ -1,11 +1,9 @@
 package co.edu.uniquindio.unimarket.modelo.entidades;
-
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Getter
@@ -13,21 +11,13 @@ import java.util.List;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class Compra implements Serializable {
+public class Calificacion implements Serializable {
     @Id
     @EqualsAndHashCode.Include
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
     @Column(nullable = false)
-    private LocalDate fechaCreacion;
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private MedioPago medioPago;
-    @Column(nullable = false)
-    private float valorTotal;
-    @OneToMany(mappedBy="detalleCompra")
-    private List<DetalleCompra> detalleCompraList;
-
+    private int estrellas;
 
 }

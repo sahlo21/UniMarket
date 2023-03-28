@@ -15,10 +15,14 @@ import java.io.Serializable;
 public class Persona implements Serializable {
     @Id
     @EqualsAndHashCode.Include
-
-    private int cedula;
+    @Column(nullable = false, length = 15)
+    private String codigo;
+    @Column(nullable = false, length = 50)
     private String nombre;
-    private String telefono;
+    @Column(nullable = false, length = 50)
+    private String contrasena;
+    @Column(nullable = false, length = 50)
+    private String email;
 
 
 
