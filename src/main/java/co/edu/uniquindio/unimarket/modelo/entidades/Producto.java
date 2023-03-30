@@ -29,7 +29,7 @@ public class Producto implements Serializable {
     @Column(nullable = false)
     private LocalDate fechaLimite;
     @Column(nullable = false)
-    private LocalDate fechaCreado;
+    private LocalDate fechaCreacion;
     @Column(nullable = false)
     private boolean estado;
     @Column(nullable = false, length = 150)

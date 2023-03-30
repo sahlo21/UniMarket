@@ -4,14 +4,26 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 @AllArgsConstructor
-@Setter
 @Getter
-public class UsuarioDTO {
+@Setter
+@ToString
+public class UsuarioGetDTO {
+
     private int codigo;
+
     private String nombre;
+
     private String email;
-    private String contrasena;
-    private String telefono;
+
     private String direccion;
+
+    private String telefono;
+
 }

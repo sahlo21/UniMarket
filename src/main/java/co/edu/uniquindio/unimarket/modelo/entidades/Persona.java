@@ -15,8 +15,9 @@ import java.io.Serializable;
 public class Persona implements Serializable {
     @Id
     @EqualsAndHashCode.Include
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, length = 15)
-    private String codigo;
+    private int codigo;
     @Column(nullable = false, length = 50)
     private String nombre;
     @Column(nullable = false, length = 50)
