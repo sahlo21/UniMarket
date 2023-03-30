@@ -19,11 +19,11 @@ public class Producto implements Serializable {
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
+    @Column(nullable = false)
+    private int codigoVendedor;
     @Column(nullable = false, length = 50)
     private String nombre;
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private Categoria categoria;
+
     @Column(nullable = false)
     private int unidades;
     @Column(nullable = false)

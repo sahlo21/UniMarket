@@ -3,6 +3,7 @@ package co.edu.uniquindio.unimarket.servicios.implementacion;
 import co.edu.uniquindio.unimarket.dto.ProductoDTO;
 import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
 import co.edu.uniquindio.unimarket.modelo.entidades.Categoria;
+import co.edu.uniquindio.unimarket.modelo.entidades.Imagen;
 import co.edu.uniquindio.unimarket.modelo.entidades.Producto;
 import co.edu.uniquindio.unimarket.repositorios.ProductoRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
@@ -10,7 +11,9 @@ import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 @Service
 @AllArgsConstructor
@@ -19,44 +22,41 @@ public class ProductoServicioImpl implements ProductoServicio {
     private final UsuarioServicio usuarioServicio;
 
     @Override
-    public int crearProducto(ProductoDTO productoDTO) throws Exception {
+    public int crearProducto(ProductoDTO productoDTO)  {
 
         Producto producto = new Producto();
+        producto.setCodigoVendedor(productoDTO.getCodigoVendedor());
         producto.setNombre( productoDTO.getNombre() );
-        producto.setDescripcion( productoDTO.getDescripcion() );
         producto.setUnidades( productoDTO.getUnidades() );
+        producto.setDescripcion( productoDTO.getDescripcion() );
         producto.setPrecio( productoDTO.getPrecio() );
         producto.setImagenList( productoDTO.getImagenes() );
-        producto.setCategoria( productoDTO.getCategorias() );
-        producto.setEstado( false );
-        producto.setFechaCreacion( LocalDateTime.now() );
-        producto.setFechaLimite( LocalDateTime.now().plusDays(60) );
+        producto.setCategoriaList( productoDTO.getCategorias() );
 
         return productoRepo.save( producto ).getCodigo();
     }
 
     @Override
-    public int actualizarProducto(int codigoProducto, ProductoDTO productoDTO) throws Exception{
+    public int actualizarProducto(int codigoProducto, ProductoDTO productoDTO)  {
         return 0;
     }
 
-    @Override
     public int actualizarUnidades(int codigoProducto, int unidades) throws Exception{
         return 0;
     }
 
-    @Override
-    public int actualizarEstado(int codigoProducto, Estado estado) throws Exception{
+
+    public int actualizarEstado(int codigoProducto, boolean estado) {
         return 0;
     }
 
     @Override
-    public int eliminarProducto(int codigoProducto) throws Exception{
+    public int eliminarProducto(int codigoProducto) {
         return 0;
     }
 
     @Override
-    public ProductoGetDTO obtenerProducto(int codigoProducto) throws Exception{
+    public ProductoGetDTO obtenerProducto(int codigoProducto) {
         return null;
     }
 
@@ -76,16 +76,15 @@ public class ProductoServicioImpl implements ProductoServicio {
     private ProductoGetDTO convertir(Producto producto){
 
         ProductoGetDTO productoGetDTO = new ProductoGetDTO(
+
                 producto.getCodigo(),
-                producto.getEstado(),
-                producto.getFechaLimite(),
+                producto.getCodigoVendedor(),
+                producto.getUnidades(),
                 producto.getNombre(),
                 producto.getDescripcion(),
-                producto.getUnidades(),
                 producto.getPrecio(),
-                producto.getVendedor().getCodigo(),
-                producto.getImagen(),
-                producto.getCategoria()
+                producto.getImagenList(),
+                producto.getCategoriaList()
         );
 
         return productoGetDTO;
@@ -97,7 +96,7 @@ public class ProductoServicioImpl implements ProductoServicio {
     }
 
     @Override
-    public List<ProductoGetDTO> listarProductosPorEstado(Estado estado) {
+    public List<ProductoGetDTO> listarProductosPorEstado(boolean estado) {
         return null;
     }
 
