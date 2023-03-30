@@ -7,20 +7,11 @@ import co.edu.uniquindio.unimarket.repositorios.UsuarioRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import co.edu.uniquindio.unimarket.dto.UsuarioDTO;
-import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
-import co.edu.uniquindio.unimarket.modelo.Usuario;
-import co.edu.uniquindio.unimarket.repositorios.UsuarioRepo;
-import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class UsuarioServicioImpl implements UsuarioServicio {
-
     private final UsuarioRepo usuarioRepo;
 
     @Override
@@ -52,12 +43,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
     }
 
     @Override
-    public int eliminarUsuario(int codigoUsuario) {
-        return 0;
-    }
-
-    @Override
-    public int eliminiarUsuario(int codigoUsuario) throws Exception{
+    public int eliminarUsuario(int codigoUsuario) throws Exception{
         validarExiste(codigoUsuario);
         usuarioRepo.deleteById(codigoUsuario);
         return codigoUsuario;
@@ -109,4 +95,5 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         usuario.setContrasena( usuarioDTO.getContrasena() );
 
         return usuario;
-    }}
+    }
+}

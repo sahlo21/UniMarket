@@ -9,11 +9,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProductoRepo extends JpaRepository<Producto, String> {
-    @Query("select p from Producto p where p.vendedor.codigo = :codigoUsuario")
+public interface ProductoRepo extends JpaRepository<Producto, Integer> {
+
+    @Query("select p from Producto p where p.codigoVendedor = :codigoUsuario")
     List<Producto> listarProductosUsuario(int codigoUsuario);
 
     @Query("select p from Producto p where p.nombre like concat( '%', :nombre, '%' ) and p.activo = 1")
     List<Producto> listarProductosNombre(String nombre);
+
 
 }
