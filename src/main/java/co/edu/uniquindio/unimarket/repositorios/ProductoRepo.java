@@ -11,11 +11,11 @@ import java.util.List;
 @Repository
 public interface ProductoRepo extends JpaRepository<Producto, Integer> {
 
-    @Query("select p from Producto p where p.codigoVendedor = :codigoUsuario")
+    @Query("select p from Producto p where p.usuario.codigo = :codigoUsuario")
     List<Producto> listarProductosUsuario(int codigoUsuario);
 
-    @Query("select p from Producto p where p.nombre like concat( '%', :nombre, '%' ) and p.activo = 1")
-    List<Producto> listarProductosNombre(String nombre);
+    //@Query("select p from Producto p where p.nombre like concat( '%', :nombre, '%' ) and p.activo = 1")
+   // List<Producto> listarProductosNombre(String nombre);
 
 
 }

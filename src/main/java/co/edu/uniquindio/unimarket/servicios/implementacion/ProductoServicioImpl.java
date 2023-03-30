@@ -25,7 +25,6 @@ public class ProductoServicioImpl implements ProductoServicio {
     public int crearProducto(ProductoDTO productoDTO)  {
 
         Producto producto = new Producto();
-        producto.setCodigoVendedor(productoDTO.getCodigoVendedor());
         producto.setNombre( productoDTO.getNombre() );
         producto.setUnidades( productoDTO.getUnidades() );
         producto.setDescripcion( productoDTO.getDescripcion() );
@@ -78,7 +77,7 @@ public class ProductoServicioImpl implements ProductoServicio {
         ProductoGetDTO productoGetDTO = new ProductoGetDTO(
 
                 producto.getCodigo(),
-                producto.getCodigoVendedor(),
+                producto.getUsuario().getCodigo(),
                 producto.getUnidades(),
                 producto.getNombre(),
                 producto.getDescripcion(),
@@ -106,12 +105,12 @@ public class ProductoServicioImpl implements ProductoServicio {
     @Override
     public List<ProductoGetDTO> listarProductosNombre(String nombre) {
 
-        List<Producto> lista = productoRepo.listarProductosNombre(nombre);
+        //List<Producto> lista = productoRepo.listarProductosNombre(nombre);
         List<ProductoGetDTO> respuesta = new ArrayList<>();
 
-        for(Producto p : lista){
-           respuesta.add( convertir(p) );
-        }
+        //for(Producto p : lista){
+         //  respuesta.add( convertir(p) );
+        //}
 
         return respuesta;
     }

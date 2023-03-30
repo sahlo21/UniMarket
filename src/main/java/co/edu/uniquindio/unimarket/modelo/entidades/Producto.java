@@ -19,8 +19,7 @@ public class Producto implements Serializable {
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
-    @Column(nullable = false)
-    private int codigoVendedor;
+
     @Column(nullable = false, length = 50)
     private String nombre;
 
