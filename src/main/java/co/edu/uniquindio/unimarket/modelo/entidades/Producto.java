@@ -36,15 +36,17 @@ public class Producto implements Serializable {
     private String descripcion;
     @Column(nullable = false)
     private float precio;
-    @OneToMany(mappedBy="categoria")
+    @ElementCollection
     private List<Categoria> categoriaList;
-    @OneToMany(mappedBy="comentario")
+    @OneToMany(mappedBy="producto")
     private List<Comentario> comentarioList;
-    @OneToMany(mappedBy="imagen")
+    @OneToMany(mappedBy="producto")
     private List<Imagen> imagenList;
-    @OneToMany(mappedBy="calificacion")
+    @ElementCollection
+    @OneToMany(mappedBy="producto")
     private List<Calificacion> calificacionList;
-
+    @ManyToOne
+    private Usuario usuario;
 
 
 }

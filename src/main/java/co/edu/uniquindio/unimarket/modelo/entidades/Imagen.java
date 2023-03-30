@@ -19,4 +19,6 @@ public class Imagen implements Serializable {
     private int idImagen;
     @Column(nullable = false)
     private String ruta;
+    @ManyToOne
+    private Producto producto;
 }

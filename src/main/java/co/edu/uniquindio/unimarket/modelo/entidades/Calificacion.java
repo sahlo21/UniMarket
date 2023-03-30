@@ -19,5 +19,9 @@ public class Calificacion implements Serializable {
     private int codigo;
     @Column(nullable = false)
     private int estrellas;
+    @ManyToOne
+    private Usuario usuario;
+    @ManyToOne
+    private Producto producto;
 
 }

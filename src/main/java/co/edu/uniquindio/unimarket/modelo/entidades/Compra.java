@@ -26,9 +26,10 @@ public class Compra implements Serializable {
     private MedioPago medioPago;
     @Column(nullable = false)
     private float valorTotal;
-    @OneToMany(mappedBy="detalleCompra")
+    @OneToMany(mappedBy="compra")
     private List<DetalleCompra> detalleCompraList;
-    //ola
+    @ManyToOne
+    private Usuario usuario;
 
 
 }
