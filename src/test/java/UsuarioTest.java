@@ -1,3 +1,4 @@
+import co.edu.uniquindio.unimarket.UniMarketApplication;
 import co.edu.uniquindio.unimarket.dto.UsuarioDTO;
 import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
@@ -6,8 +7,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTestAotProcessor;
 
-    @SpringBootTest
+@SpringBootTest(classes = UniMarketApplication.class)
     @Transactional
     public class UsuarioTest {
 
@@ -28,8 +30,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
             int codigo = usuarioServicio.crearUsuario(usuarioDTO);
 
+
             //Se espera que si se registra correctamente entonces el servicio no debe retornar 0
             Assertions.assertNotEquals(0, codigo);
+            System.out.println(usuarioServicio.obtenerUsuario(1234));
+
 
         }
 
