@@ -22,4 +22,6 @@ public class Comentario implements Serializable {
     private LocalDate fechaCreacion;
     @ManyToOne
     private Producto producto;
+    @ManyToOne
+    private Usuario usuario;
 }

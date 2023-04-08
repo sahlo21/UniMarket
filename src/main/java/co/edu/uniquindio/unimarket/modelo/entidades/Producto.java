@@ -41,11 +41,14 @@ public class Producto implements Serializable {
     private List<Comentario> comentarioList;
     @OneToMany(mappedBy="producto")
     private List<Imagen> imagenList;
-    @ElementCollection
     @OneToMany(mappedBy="producto")
     private List<Calificacion> calificacionList;
-    @ManyToOne
-    private Usuario usuario;
-
-
+    @ManyToMany
+    private List<Usuario> favoritosList;
+    @OneToMany(mappedBy = "producto")
+    private List<DetalleCompra> detalleCompraList;
+    @OneToMany(mappedBy = "producto")
+    private List<ProductoModerado> productoModeradoList;
+    @ManyToMany
+    private List<Usuario> usuarioList;
 }
