@@ -73,7 +73,7 @@ public class ProductoServicioImpl implements ProductoServicio {
     }
 
     private ProductoGetDTO convertir(Producto producto){
-
+/**
         ProductoGetDTO productoGetDTO = new ProductoGetDTO(
 
                 producto.getCodigo(),
@@ -87,6 +87,8 @@ public class ProductoServicioImpl implements ProductoServicio {
         );
 
         return productoGetDTO;
+ **/
+    return null;
     }
 
     @Override
