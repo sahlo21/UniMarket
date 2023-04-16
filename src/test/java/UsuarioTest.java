@@ -13,30 +13,27 @@ import org.springframework.boot.test.context.SpringBootTestAotProcessor;
     @Transactional
     public class UsuarioTest {
 
-        @Autowired
-        private UsuarioServicio usuarioServicio;
+    @Autowired
+    private UsuarioServicio usuarioServicio;
 
-        @Test
-        public void crearUsuarioTest() throws Exception{
+    @Test
+    public void crearUsuarioTest() throws Exception{
 
-            //Se crea el usuario con el servicio de crearUsuario
-            UsuarioDTO usuarioDTO = new UsuarioDTO(
-                    "Pepito 1",
-                    "pepe1@email.com",
-                    1234,
-                    "Calle 123",
-                    "343",
-                    "narnia");
+        //Se crea el usuario con el servicio de crearUsuario
+        UsuarioDTO usuarioDTO = new UsuarioDTO(
+                "Pepito 1",
+                "pepe1@email.com",
+                "1234",
+                "12345",
+                "Calle 123");
 
-            int codigo = usuarioServicio.crearUsuario(usuarioDTO);
+        int codigo = usuarioServicio.crearUsuario(usuarioDTO);
 
+        //Se espera que si se registra correctamente entonces el servicio no debe retornar 0
+        Assertions.assertNotEquals(0, codigo);
+        System.err.println("usuario: "+usuarioDTO.getContrasena()+ usuarioDTO.getNombre()+ usuarioDTO.getEmail()+usuarioDTO.getDireccion()+usuarioDTO.getTelefono());
 
-            //Se espera que si se registra correctamente entonces el servicio no debe retornar 0
-            Assertions.assertNotEquals(0, codigo);
-            System.out.println(usuarioServicio.obtenerUsuario(1234));
-
-
-        }
+    }
 
         @Test
         public void eliminarUsuarioTest() throws Exception{
@@ -45,10 +42,9 @@ import org.springframework.boot.test.context.SpringBootTestAotProcessor;
             UsuarioDTO usuarioDTO = new UsuarioDTO(
                     "Pepito 1",
                     "pepe1@email.com",
-                    1234,
+                    "1234",
                     "Calle 123",
-                    "343",
-                    "narnia");
+                    "123123");
 
             int codigo = usuarioServicio.crearUsuario(usuarioDTO);
 
@@ -68,15 +64,14 @@ import org.springframework.boot.test.context.SpringBootTestAotProcessor;
             UsuarioDTO usuarioDTO = new UsuarioDTO(
                     "Pepito 1",
                     "pepe1@email.com",
-                    1234,
+                    "1234",
                     "Calle 123",
-                    "343",
-                    "narnia");
+                    "343");
 
             int codigoNuevo = usuarioServicio.crearUsuario(usuarioDTO);
 
             //El servicio de actualizar nos retorna el usuario
-            UsuarioGetDTO usuarioActualizado = usuarioServicio.actualizarUsuario(codigoNuevo, new UsuarioDTO("Pepito Perez", "pepe1@email.com", 1234, "Calle 123", "1111","narnia"));
+            UsuarioGetDTO usuarioActualizado = usuarioServicio.actualizarUsuario(codigoNuevo, new UsuarioDTO("Pepito Perez", "pepe1@email.com", "1234", "Calle 123", "1111"));
 
             //Se comprueba que ahora el teléfono del usuario no es el que se usó cuando se creó inicialmente
             Assertions.assertNotEquals("2782", usuarioActualizado.getTelefono());
@@ -90,10 +85,9 @@ import org.springframework.boot.test.context.SpringBootTestAotProcessor;
             UsuarioDTO usuarioDTO = new UsuarioDTO(
                     "Pepito 1",
                     "pepe1@email.com",
-                    1234,
+                    "1234",
                     "Calle 123",
-                    "343",
-                    "narnia");
+                    "343");
 
             int codigoNuevo = usuarioServicio.crearUsuario(usuarioDTO);
 
@@ -102,6 +96,7 @@ import org.springframework.boot.test.context.SpringBootTestAotProcessor;
 
             //Comprobamos que la dirección que está en la base de datos coincide con la que esperamos
             Assertions.assertEquals("Calle 123", usuarioGetDTO.getDireccion());
+            System.err.println("usuario: "+ usuarioGetDTO.getNombre()+ usuarioGetDTO.getEmail()+usuarioGetDTO.getDireccion()+usuarioGetDTO.getTelefono());
 
         }
 
