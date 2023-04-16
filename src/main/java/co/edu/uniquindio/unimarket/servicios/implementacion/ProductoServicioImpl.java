@@ -62,12 +62,12 @@ public class ProductoServicioImpl implements ProductoServicio {
     @Override
     public List<ProductoGetDTO> listarProductosUsuario(int codigoUsuario) {
 
-        List<Producto> lista = productoRepo.listarProductosUsuario(codigoUsuario);
+      //  List<Producto> lista = productoRepo.listarProductosUsuario(codigoUsuario);
         List<ProductoGetDTO> respuesta = new ArrayList<>();
 
-       for(Producto p : lista){
-           respuesta.add( convertir(p) );
-        }
+       //for(Producto p : lista){
+       //    respuesta.add( convertir(p) );
+        //}
 
         return respuesta;
     }

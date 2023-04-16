@@ -13,6 +13,7 @@ import java.util.List;
 @Repository
 public interface ProductoRepo extends JpaRepository<Producto, Integer> {
 
+<<<<<<< HEAD
     @Query("select p from Producto p join ProductoUsuario pu on p.codigo=pu.producto.codigo join Usuario u on pu.usuario.codigo=u.codigo where u.codigo= :codigoUsuario")
     List<Producto> listarProductosUsuario(int codigoUsuario);
     @Query("select p from Producto p where p.nombre like concat( '%', :nombre, '%' ) and p.estado = TRUE ")
@@ -27,4 +28,13 @@ public interface ProductoRepo extends JpaRepository<Producto, Integer> {
     List<ProductoGetDTO> listarProductosFavoritos(int codigoUsuario);
     @Query("select p from Producto p where p.precio >= :precioMinimo AND p.precio <= :precioMaximo")
     List<ProductoGetDTO> listarProductosPrecio(float precioMinimo, float precioMaximo);
+=======
+   // @Query("select p from Producto p where p.usuario.codigo = :codigoUsuario")
+    //List<Producto> listarProductosUsuario(int codigoUsuario);
+
+    //@Query("select p from Producto p where p.nombre like concat( '%', :nombre, '%' ) and p.activo = 1")
+   // List<Producto> listarProductosNombre(String nombre);
+
+
+>>>>>>> fd74b70271d037283c55e22c857b1b7337feed1f
 }

@@ -6,6 +6,7 @@ import co.edu.uniquindio.unimarket.modelo.entidades.Usuario;
 import co.edu.uniquindio.unimarket.repositorios.UsuarioRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 
@@ -20,7 +21,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         Usuario buscado = usuarioRepo.buscarUsuario(usuarioDTO.getEmail());
 
         if(buscado!=null){
-            throw new Exception("El correo "+usuarioDTO.getEmail()+" ya está en uso");
+            throw new Exception("El correo "+usuarioDTO.getEmail()+" ya estÃ¡ en uso");
         }
 
         Usuario usuario = convertir(usuarioDTO);
@@ -92,7 +93,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         usuario.setEmail( usuarioDTO.getEmail() );
         usuario.setDireccion( usuarioDTO.getDireccion() );
         usuario.setTelefono( usuarioDTO.getTelefono() );
-        usuario.setContrasena( usuarioDTO.getContrasena() );
+        usuario.setContrasena( usuarioDTO.getContrasena());
 
         return usuario;
     }
