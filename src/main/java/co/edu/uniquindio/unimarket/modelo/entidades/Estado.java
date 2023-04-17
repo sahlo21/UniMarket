@@ -4,5 +4,5 @@ public enum Estado {
     ACTIVO,
     INACTIVO,
     REVISION,
-    PORREVISAR;
+    POR_REVISAR;
 }

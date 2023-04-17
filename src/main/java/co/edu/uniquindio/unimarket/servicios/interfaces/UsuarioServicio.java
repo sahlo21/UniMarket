@@ -12,4 +12,5 @@ public interface UsuarioServicio {
     int eliminarUsuario(int codigoUsuario) throws Exception;
 
     UsuarioGetDTO obtenerUsuario(int codigoUsuario) throws Exception;
+    Usuario obtener(int codigoUsuario) throws Exception;
 }

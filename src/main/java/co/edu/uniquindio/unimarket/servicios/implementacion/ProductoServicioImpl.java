@@ -2,9 +2,8 @@ package co.edu.uniquindio.unimarket.servicios.implementacion;
 
 import co.edu.uniquindio.unimarket.dto.ProductoDTO;
 import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
-import co.edu.uniquindio.unimarket.modelo.entidades.Categoria;
-import co.edu.uniquindio.unimarket.modelo.entidades.Imagen;
-import co.edu.uniquindio.unimarket.modelo.entidades.Producto;
+import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
+import co.edu.uniquindio.unimarket.modelo.entidades.*;
 import co.edu.uniquindio.unimarket.repositorios.ProductoRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
@@ -15,6 +14,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class ProductoServicioImpl implements ProductoServicio {
@@ -22,7 +23,7 @@ public class ProductoServicioImpl implements ProductoServicio {
     private final UsuarioServicio usuarioServicio;
 
     @Override
-    public int crearProducto(ProductoDTO productoDTO)  {
+    public int crearProducto(ProductoDTO productoDTO) throws Exception {
 
         Producto producto = new Producto();
         producto.setNombre( productoDTO.getNombre() );
@@ -30,9 +31,13 @@ public class ProductoServicioImpl implements ProductoServicio {
         producto.setDescripcion( productoDTO.getDescripcion() );
         producto.setPrecio( productoDTO.getPrecio() );
         producto.setImagenList( productoDTO.getImagenes() );
+        producto.setCodigoVendedor(usuarioServicio.obtener( productoDTO.getCodigoVendedor()).getCodigo());
         producto.setCategoriaList( productoDTO.getCategorias() );
+        producto.setFechaCreacion( LocalDateTime.now() );
+        producto.setFechaLimite( LocalDateTime.now().plusDays(60) );
+        producto.setEstado(Estado.POR_REVISAR);
 
-        return 1;
+        return productoRepo.save( producto ).getCodigo();
     }
 
     @Override
@@ -54,9 +59,20 @@ public class ProductoServicioImpl implements ProductoServicio {
         return 0;
     }
 
+
     @Override
-    public ProductoGetDTO obtenerProducto(int codigoProducto) {
-        return null;
+    public ProductoGetDTO obtenerProducto(int codigoProducto) throws Exception{
+        return convertir( obtener(codigoProducto) );
+    }
+
+    public Producto obtener(int codigoProducto) throws Exception{
+        Optional<Producto> producto = productoRepo.findById(codigoProducto);
+
+        if(producto.isEmpty() ){
+            throw new Exception("El código "+codigoProducto+" no está asociado a ningún usuario");
+        }
+
+        return producto.get();
     }
 
     @Override
@@ -73,11 +89,11 @@ public class ProductoServicioImpl implements ProductoServicio {
     }
 
     private ProductoGetDTO convertir(Producto producto){
-/**
+
         ProductoGetDTO productoGetDTO = new ProductoGetDTO(
 
                 producto.getCodigo(),
-                producto.getUsuario().getCodigo(),
+                producto.getCodigoVendedor(),
                 producto.getUnidades(),
                 producto.getNombre(),
                 producto.getDescripcion(),
@@ -87,8 +103,8 @@ public class ProductoServicioImpl implements ProductoServicio {
         );
 
         return productoGetDTO;
- **/
-    return null;
+
+
     }
 
     @Override

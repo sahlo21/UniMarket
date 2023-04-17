@@ -5,6 +5,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -22,15 +23,17 @@ public class Producto implements Serializable {
 
     @Column(nullable = false, length = 50)
     private String nombre;
-
+    @Column(nullable = false)
+    private int codigoVendedor;
     @Column(nullable = false)
     private int unidades;
     @Column(nullable = false)
-    private LocalDate fechaLimite;
+    private LocalDateTime fechaLimite;
     @Column(nullable = false)
-    private LocalDate fechaCreacion;
+    private LocalDateTime fechaCreacion;
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private boolean estado;
+    private Estado estado;
     @Column(nullable = false, length = 150)
     private String descripcion;
     @Column(nullable = false)
@@ -49,6 +52,8 @@ public class Producto implements Serializable {
     private List<DetalleCompra> detalleCompraList;
     @OneToMany(mappedBy = "producto")
     private List<ProductoModerado> productoModeradoList;
-    @OneToMany(mappedBy = "producto")
-    private List<ProductoUsuario> productoUsuarioList;
+
+
+    @ManyToOne
+    private Usuario usuario;
 }
