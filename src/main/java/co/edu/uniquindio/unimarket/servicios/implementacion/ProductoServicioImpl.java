@@ -32,7 +32,7 @@ public class ProductoServicioImpl implements ProductoServicio {
         producto.setImagenList( productoDTO.getImagenes() );
         producto.setCategoriaList( productoDTO.getCategorias() );
 
-        return productoRepo.save( producto ).getCodigo();
+        return 1;
     }
 
     @Override
