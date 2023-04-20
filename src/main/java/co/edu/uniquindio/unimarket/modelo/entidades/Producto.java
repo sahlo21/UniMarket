@@ -53,7 +53,7 @@ public class Producto implements Serializable {
     @OneToMany(mappedBy = "producto")
     private List<ProductoModerado> productoModeradoList;
 
+    @OneToMany(mappedBy = "producto")
+    private List<ProductoUsuario> productoUsuarioList;
 
-    @ManyToOne
-    private Usuario usuario;
 }

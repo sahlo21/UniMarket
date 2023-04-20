@@ -2,8 +2,8 @@ import co.edu.uniquindio.unimarket.UniMarketApplication;
 import co.edu.uniquindio.unimarket.dto.ProductoDTO;
 import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
 import co.edu.uniquindio.unimarket.dto.UsuarioDTO;
-import co.edu.uniquindio.unimarket.modelo.entidades.Categoria;
-import co.edu.uniquindio.unimarket.modelo.entidades.Imagen;
+import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
+import co.edu.uniquindio.unimarket.modelo.entidades.*;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import jakarta.transaction.Transactional;
@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.rmi.ServerError;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -52,6 +53,7 @@ public class ProductoTest {
         //Se crea el producto y se usa el código dado por el servicio de registro de usuario para asignar el vendedor
         ProductoDTO productoDTO = new ProductoDTO(
                 codigoVendedor,
+                Estado.POR_REVISAR,
                 1,
                 "Computador Asus 1",
                 "Es el mejor computador portatil que el dinero pueda comprar",
@@ -64,6 +66,8 @@ public class ProductoTest {
 
         //Se espera que el servicio retorne el código del nuevo producto
         Assertions.assertNotEquals(0, codigoProducto);
+
+        System.err.println("aakjdskasj"+usuarioServicio.obtenerUsuario(codigoVendedor));
 
     }
     @Test
@@ -91,6 +95,7 @@ public class ProductoTest {
         //Se crea el producto y se usa el código dado por el servicio de registro de usuario para asignar el vendedor
         ProductoDTO productoDTO = new ProductoDTO(
                 codigoVendedor,
+                Estado.POR_REVISAR,
                 1,
                 "Computador Asus 1",
                 "Es el mejor computador portatil que el dinero pueda comprar",
@@ -110,5 +115,58 @@ public class ProductoTest {
 
 
     }
+    @Test
+    public void listarNombre()throws Exception{
 
+        UsuarioDTO usuarioDTO = new UsuarioDTO(
+                "Pepito 1",
+                "pepe1@email.com",
+                "1234",
+                "12345",
+                "Calle 123");
+
+
+        //El servicio del usuario nos retorna el código con el que quedó en la base de datos
+        int codigoUsuario = usuarioServicio.crearUsuario(usuarioDTO);
+
+        //Se crea la colección de imágenes para el producto.
+        List<Imagen> imagenes = new ArrayList<>();
+        Imagen imagen = new Imagen();
+        imagen.setRuta("http://www.google.com/images/imagenasus.png");
+        imagenes.add(imagen);
+
+
+
+        //Se crea el producto y se usa el código dado por el servicio de registro de usuario para asignar el vendedor
+        ProductoDTO productoDTO = new ProductoDTO(
+                codigoUsuario,
+                Estado.POR_REVISAR,
+                1,
+                "Computador Asus 1",
+                "Es el mejor computador portatil que el dinero pueda comprar",
+                7000000,
+                imagenes,
+                List.of(Categoria.TECNOLOGIA));
+
+        //Se llama el servicio para crear el producto
+        int codigoProducto = productoServicio.crearProducto( productoDTO );
+
+        for(ProductoGetDTO producto :productoServicio.listarProductosUsuario(codigoUsuario)) {
+            System.err.println(producto.getNombre()+producto.getCodigoVendedor());
+
+
+        }
+        Usuario user=usuarioServicio.obtener(codigoUsuario);
+
+        for(Producto producto : user.getProductoUsuarioList();) {
+            System.err.println(producto.getNombre()+producto.getCodigoVendedor());
+
+
+        }
+
+
+        //Se espera que el servicio retorne el código del nuevo producto
+        Assertions.assertNotEquals(0, codigoProducto);
+
+    }
 }

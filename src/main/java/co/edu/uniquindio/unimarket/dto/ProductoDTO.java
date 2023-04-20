@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unimarket.dto;
 
 import co.edu.uniquindio.unimarket.modelo.entidades.Categoria;
+import co.edu.uniquindio.unimarket.modelo.entidades.Estado;
 import co.edu.uniquindio.unimarket.modelo.entidades.Imagen;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +14,7 @@ import java.util.List;
 @Setter
 public class ProductoDTO {
     private int codigoVendedor;
+    private Estado estado;
     private int unidades;
     private String nombre;
     private String descripcion;

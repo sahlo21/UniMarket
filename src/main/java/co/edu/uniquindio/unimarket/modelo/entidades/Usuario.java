@@ -27,5 +27,5 @@ public class Usuario extends Persona implements Serializable  {
     @OneToMany(mappedBy = "usuario")
     private List<UsuarioCupones> usuarioCuponesList;
     @OneToMany(mappedBy = "usuario")
-    private List<Producto> productosList;
+    private List<ProductoUsuario> productoUsuarioList;
 }
