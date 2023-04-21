@@ -84,7 +84,6 @@ public class ProductoServicioImpl implements ProductoServicio {
        for(Producto p : lista){
           respuesta.add( convertir(p) );
        }
-
         return respuesta;
     }
 
@@ -104,16 +103,11 @@ public class ProductoServicioImpl implements ProductoServicio {
 
         return productoGetDTO;
 
-
     }
-
     @Override
     public List<ProductoGetDTO> listarProductosCategoria(Categoria categoria) {
         return null;
     }
-
-
-
 
     @Override
     public List<ProductoGetDTO> listarProductosFavoritos(int codigoUsuario) {

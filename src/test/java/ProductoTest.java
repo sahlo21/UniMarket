@@ -136,7 +136,6 @@ public class ProductoTest {
         imagenes.add(imagen);
 
 
-
         //Se crea el producto y se usa el código dado por el servicio de registro de usuario para asignar el vendedor
         ProductoDTO productoDTO = new ProductoDTO(
                 codigoUsuario,
@@ -154,16 +153,13 @@ public class ProductoTest {
         for(ProductoGetDTO producto :productoServicio.listarProductosUsuario(codigoUsuario)) {
             System.err.println(producto.getNombre()+producto.getCodigoVendedor());
 
-
         }
         Usuario user=usuarioServicio.obtener(codigoUsuario);
 
-        for(Producto producto : user.getProductoUsuarioList();) {
+        for(Producto producto : user.getProducto()) {
             System.err.println(producto.getNombre()+producto.getCodigoVendedor());
 
-
         }
-
 
         //Se espera que el servicio retorne el código del nuevo producto
         Assertions.assertNotEquals(0, codigoProducto);

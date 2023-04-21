@@ -52,8 +52,6 @@ public class Producto implements Serializable {
     private List<DetalleCompra> detalleCompraList;
     @OneToMany(mappedBy = "producto")
     private List<ProductoModerado> productoModeradoList;
-
     @OneToMany(mappedBy = "producto")
-    private List<ProductoUsuario> productoUsuarioList;
-
+    private List<Usuario> productUsuarios;
 }
