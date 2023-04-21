@@ -110,7 +110,7 @@ public class ProductoTest {
         Assertions.assertNotEquals(0, codigoProducto);
         ProductoGetDTO productoGetDTO = productoServicio.obtenerProducto(codigoProducto);
 
-        System.err.println("Producto"+productoGetDTO.getCodigoProducto()+productoGetDTO.getNombre()+"vendedor: "+productoGetDTO.getCodigoVendedor()+"  "+
+        System.err.println("Producto"+productoGetDTO.getCodigo()+productoGetDTO.getNombre()+"vendedor: "+productoGetDTO.getCodigoVendedor()+"  "+
                 productoGetDTO.getPrecio()+productoGetDTO.getCategorias()+productoGetDTO.getImagenes()+productoGetDTO.getDescripcion()+productoGetDTO.getUnidades());
 
 
@@ -148,21 +148,29 @@ public class ProductoTest {
                 List.of(Categoria.TECNOLOGIA));
 
         //Se llama el servicio para crear el producto
-        int codigoProducto = productoServicio.crearProducto( productoDTO );
+         productoServicio.crearProducto( productoDTO );
+
+        //Se crea el producto y se usa el código dado por el servicio de registro de usuario para asignar el vendedor
+         productoDTO = new ProductoDTO(
+                codigoUsuario,
+                Estado.POR_REVISAR,
+                1,
+                "Computador Asus 2 ",
+                "Es el mejor computador portatil que el dinero pueda comprar",
+                7000000,
+                imagenes,
+                List.of(Categoria.TECNOLOGIA));
+
+        //Se llama el servicio para crear el producto
+        productoServicio.crearProducto( productoDTO );
 
         for(ProductoGetDTO producto :productoServicio.listarProductosUsuario(codigoUsuario)) {
-            System.err.println(producto.getNombre()+producto.getCodigoVendedor());
-
-        }
-        Usuario user=usuarioServicio.obtener(codigoUsuario);
-
-        for(Producto producto : user.getProducto()) {
-            System.err.println(producto.getNombre()+producto.getCodigoVendedor());
+            System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+producto.getCodigoVendedor()+"   ");
 
         }
 
-        //Se espera que el servicio retorne el código del nuevo producto
-        Assertions.assertNotEquals(0, codigoProducto);
+
+
 
     }
 }

@@ -23,8 +23,7 @@ public class Producto implements Serializable {
 
     @Column(nullable = false, length = 50)
     private String nombre;
-    @Column(nullable = false)
-    private int codigoVendedor;
+
     @Column(nullable = false)
     private int unidades;
     @Column(nullable = false)
