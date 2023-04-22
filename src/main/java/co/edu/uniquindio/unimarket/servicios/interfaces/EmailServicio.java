@@ -1,6 +1,6 @@
 package co.edu.uniquindio.unimarket.servicios.interfaces;
 
-import co.edu.uniquindio.unimarket.dto.EmailDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.EmailDTO;
 
 public interface EmailServicio {
 

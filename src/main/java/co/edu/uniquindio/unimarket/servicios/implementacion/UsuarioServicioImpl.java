@@ -1,12 +1,13 @@
 package co.edu.uniquindio.unimarket.servicios.implementacion;
 
-import co.edu.uniquindio.unimarket.dto.UsuarioDTO;
-import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.UsuarioDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.UsuarioGetDTO;
 import co.edu.uniquindio.unimarket.modelo.entidades.Usuario;
 import co.edu.uniquindio.unimarket.repositorios.UsuarioRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
-import org.jetbrains.annotations.NotNull;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 
@@ -14,6 +15,8 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UsuarioServicioImpl implements UsuarioServicio {
     private final UsuarioRepo usuarioRepo;
+    @Autowired
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public int crearUsuario(UsuarioDTO usuarioDTO) throws Exception{
@@ -93,7 +96,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         usuario.setEmail( usuarioDTO.getEmail() );
         usuario.setDireccion( usuarioDTO.getDireccion() );
         usuario.setTelefono( usuarioDTO.getTelefono() );
-        usuario.setContrasena( usuarioDTO.getContrasena());
+        usuario.setContrasena( passwordEncoder.encode( usuarioDTO.getContrasena()));
 
         return usuario;
     }

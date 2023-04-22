@@ -1,13 +1,12 @@
 import co.edu.uniquindio.unimarket.UniMarketApplication;
-import co.edu.uniquindio.unimarket.dto.UsuarioDTO;
-import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.UsuarioDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.UsuarioGetDTO;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTestAotProcessor;
 
 @SpringBootTest(classes = UniMarketApplication.class)
     @Transactional

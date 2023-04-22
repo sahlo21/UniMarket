@@ -1,4 +1,4 @@
-package co.edu.uniquindio.unimarket.dto;
+package co.edu.uniquindio.unimarket.modelo.dto;
 
 import co.edu.uniquindio.unimarket.modelo.entidades.MedioPago;
 import lombok.AllArgsConstructor;

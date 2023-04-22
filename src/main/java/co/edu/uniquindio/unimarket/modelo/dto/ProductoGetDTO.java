@@ -1,4 +1,4 @@
-package co.edu.uniquindio.unimarket.dto;
+package co.edu.uniquindio.unimarket.modelo.dto;
 
 import co.edu.uniquindio.unimarket.modelo.entidades.Categoria;
 import co.edu.uniquindio.unimarket.modelo.entidades.Estado;
@@ -8,17 +8,33 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+
 @AllArgsConstructor
 @Getter
 @Setter
-public class ProductoDTO {
-    private int codigoVendedor;
+public class ProductoGetDTO {
+    private int codigo;
+
     private Estado estado;
-    private int unidades;
+
+    private LocalDateTime fechaLimite;
+
     private String nombre;
+
     private String descripcion;
+
+    private int unidades;
+
     private float precio;
+
+    private int codigoVendedor;
+
     private List<Imagen> imagenes;
-    public List<Categoria> categorias;
+
+    private List<Categoria> categorias;
+
+
+
 }

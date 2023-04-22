@@ -1,7 +1,7 @@
 package co.edu.uniquindio.unimarket.servicios.interfaces;
 
-import co.edu.uniquindio.unimarket.dto.UsuarioDTO;
-import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.UsuarioDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.UsuarioGetDTO;
 import co.edu.uniquindio.unimarket.modelo.entidades.Usuario;
 
 public interface UsuarioServicio {

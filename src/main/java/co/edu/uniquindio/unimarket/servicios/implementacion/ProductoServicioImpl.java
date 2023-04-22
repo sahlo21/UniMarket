@@ -1,8 +1,7 @@
 package co.edu.uniquindio.unimarket.servicios.implementacion;
 
-import co.edu.uniquindio.unimarket.dto.ProductoDTO;
-import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
-import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.ProductoDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.ProductoGetDTO;
 import co.edu.uniquindio.unimarket.modelo.entidades.*;
 import co.edu.uniquindio.unimarket.repositorios.ProductoRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
@@ -10,7 +9,6 @@ import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;

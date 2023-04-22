@@ -1,4 +1,4 @@
-package co.edu.uniquindio.unimarket.dto;
+package co.edu.uniquindio.unimarket.modelo.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

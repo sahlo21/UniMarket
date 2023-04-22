@@ -1,8 +1,7 @@
 import co.edu.uniquindio.unimarket.UniMarketApplication;
-import co.edu.uniquindio.unimarket.dto.ProductoDTO;
-import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
-import co.edu.uniquindio.unimarket.dto.UsuarioDTO;
-import co.edu.uniquindio.unimarket.dto.UsuarioGetDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.ProductoDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.ProductoGetDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.UsuarioDTO;
 import co.edu.uniquindio.unimarket.modelo.entidades.*;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
@@ -12,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.rmi.ServerError;
 import java.util.ArrayList;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package co.edu.uniquindio.unimarket.servicios.interfaces;
 
-import co.edu.uniquindio.unimarket.dto.ProductoDTO;
-import co.edu.uniquindio.unimarket.dto.ProductoGetDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.ProductoDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.ProductoGetDTO;
 import co.edu.uniquindio.unimarket.modelo.entidades.Categoria;
 
 import java.util.List;
