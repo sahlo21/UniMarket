@@ -20,7 +20,7 @@ public class Persona implements Serializable {
     private int codigo;
     @Column(nullable = false, length = 50)
     private String nombre;
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 100)
     private String contrasena;
     @Column(nullable = false, length = 50)
     private String email;
