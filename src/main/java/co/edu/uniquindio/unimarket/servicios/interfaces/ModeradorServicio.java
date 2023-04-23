@@ -9,8 +9,7 @@ import java.util.List;
 
 public interface ModeradorServicio {
 
-
-    List<ProductoGetDTO> listarProductos();
-
+    List<ProductoGetDTO> listarProductos(int codigoProducto);
     Estado revisarProducto (int codigoProducto);
+
 }

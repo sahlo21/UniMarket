@@ -8,8 +8,6 @@ import java.util.List;
 public interface DetallePrestamoServicio {
 
     int crearDetallePrestamo(DetalleCompraDTO detalleCompraDTO);
-
     List<DetalleCompraDTO> listarDetalleCompra(int c);
-
 
 }

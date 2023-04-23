@@ -21,7 +21,7 @@ public class CalificacionServicioImpl implements CalificacionServicio {
     }
 
     @Override
-    public List<CalificacionDTO> listarCalificacion() {
+    public List<CalificacionDTO> listarCalificacion(int codigoProducto) {
         return null;
     }
 

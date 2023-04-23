@@ -12,8 +12,9 @@ import java.util.Optional;
 public interface UsuarioRepo extends JpaRepository<Usuario, Integer> {
     @Query("select u from Usuario u where u.email = :correo")
     Usuario buscarUsuario(String correo);
-
     @Query("select u from Usuario u where u.codigo = :codigo")
     UsuarioGetDTO obtenerUsuario(int codigo);
+    @Query("select u from Usuario u where u.email = :email")
     Optional<Usuario> findByEmail(String email);
+
 }

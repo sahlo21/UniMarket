@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ModeradorServicioImpl implements ModeradorServicio {
     @Override
-    public List<ProductoGetDTO> listarProductos() {
+    public List<ProductoGetDTO> listarProductos(int codigoProducto) {
         return null;
     }
 

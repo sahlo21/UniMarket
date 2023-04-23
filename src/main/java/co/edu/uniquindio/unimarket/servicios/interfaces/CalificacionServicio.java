@@ -11,7 +11,7 @@ public interface CalificacionServicio {
 
     int crearCalificacion(CalificacionDTO calificacionDTO);
 
-    List<CalificacionDTO> listarCalificacion();
+    List<CalificacionDTO> listarCalificacion(int codigoProducto);
 
     float promediarCalificaciones(List<CalificacionDTO> calificacionDTOList);
 }
