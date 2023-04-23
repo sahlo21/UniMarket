@@ -23,7 +23,7 @@ public interface ProductoRepo extends JpaRepository<Producto, Integer> {
     List<ProductoGetDTO> listarProductosCategoria(Categoria categoria);
     @Query("select p from Producto p where p.estado = :estado")
     List<ProductoGetDTO> listarProductosEstado(boolean estado);
-    @Query("select p from Producto p join FavotirosProductos fp on p.codigo = fp.producto.codigo join Usuario u on fp.usuario.codigo = u.codigo where u.codigo = :codigoUsuario")
+    @Query("select p from Producto p join FavoritosProductos fp on p.codigo = fp.producto.codigo join Usuario u on fp.usuario.codigo = u.codigo where u.codigo = :codigoUsuario")
     List<ProductoGetDTO> listarProductosFavoritos(int codigoUsuario);
     @Query("select p from Producto p where p.precio >= :precioMinimo AND p.precio <= :precioMaximo")
     List<ProductoGetDTO> listarProductosPrecio(float precioMinimo, float precioMaximo);

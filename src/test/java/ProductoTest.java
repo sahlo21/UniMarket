@@ -51,7 +51,7 @@ public class ProductoTest {
         //Se crea el producto y se usa el código dado por el servicio de registro de usuario para asignar el vendedor
         ProductoDTO productoDTO = new ProductoDTO(
                 codigoVendedor,
-                Estado.POR_REVISAR,
+                Estado.SIN_REVISAR,
                 1,
                 "Computador Asus 1",
                 "Es el mejor computador portatil que el dinero pueda comprar",
@@ -93,7 +93,7 @@ public class ProductoTest {
         //Se crea el producto y se usa el código dado por el servicio de registro de usuario para asignar el vendedor
         ProductoDTO productoDTO = new ProductoDTO(
                 codigoVendedor,
-                Estado.POR_REVISAR,
+                Estado.SIN_REVISAR,
                 1,
                 "Computador Asus 1",
                 "Es el mejor computador portatil que el dinero pueda comprar",
@@ -137,7 +137,7 @@ public class ProductoTest {
         //Se crea el producto y se usa el código dado por el servicio de registro de usuario para asignar el vendedor
         ProductoDTO productoDTO = new ProductoDTO(
                 codigoUsuario,
-                Estado.POR_REVISAR,
+                Estado.SIN_REVISAR,
                 1,
                 "Computador Asus 1",
                 "Es el mejor computador portatil que el dinero pueda comprar",
@@ -151,7 +151,7 @@ public class ProductoTest {
         //Se crea el producto y se usa el código dado por el servicio de registro de usuario para asignar el vendedor
          productoDTO = new ProductoDTO(
                 codigoUsuario,
-                Estado.POR_REVISAR,
+                Estado.SIN_REVISAR,
                 1,
                 "Computador Asus 2 ",
                 "Es el mejor computador portatil que el dinero pueda comprar",
@@ -166,9 +166,5 @@ public class ProductoTest {
             System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+producto.getCodigoVendedor()+"   ");
 
         }
-
-
-
-
     }
 }
