@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -46,7 +45,7 @@ public class Producto implements Serializable {
     @OneToMany(mappedBy="producto")
     private List<Calificacion> calificacionList;
     @OneToMany(mappedBy = "producto")
-    private List<FavotirosProductos> favotirosProductosList;
+    private List<FavoritosProductos> favotirosProductosList;
     @OneToMany(mappedBy = "producto")
     private List<DetalleCompra> detalleCompraList;
     @OneToMany(mappedBy = "producto")

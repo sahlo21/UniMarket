@@ -33,7 +33,7 @@ public class ProductoServicioImpl implements ProductoServicio {
         producto.setCategoriaList( productoDTO.getCategorias() );
         producto.setFechaCreacion( LocalDateTime.now() );
         producto.setFechaLimite( LocalDateTime.now().plusDays(60) );
-        producto.setEstado(Estado.POR_REVISAR);
+        producto.setEstado(Estado.SIN_REVISAR);
 
         return productoRepo.save( producto ).getCodigo();
     }
