@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unimarket.modelo.dto;
 
+import co.edu.uniquindio.unimarket.modelo.entidades.DetalleCompra;
 import co.edu.uniquindio.unimarket.modelo.entidades.MedioPago;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,9 +19,7 @@ public class CompraGetDTO {
 
     private float valorTotal;
 
-    private int codigoUsuario;
-
     private MedioPago medioPago;
 
-    private List<DetalleCompraDTO> detalleCompraDTO;
+    private List<DetalleCompra> detalleCompra;
 }

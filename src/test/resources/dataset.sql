@@ -3,3 +3,4 @@ insert into usuario values (2, "brocoli", "juanita@gmail.com", "juanita", "Calle
 insert into usuario values (3, "perejil", "andrea@gmail.com", "andrea", "Calle 13 # 2 - 13","3102089978");
 insert into usuario values (4, "cilantro", "kevin@gmail.com", "kevin", "Calle 14 # 3 - 23","3212089978");
 insert into usuario values (5, "puerro", "juancho@gmail.com", "juan", "Calle 15 # 17 - 43","3178586989");
+

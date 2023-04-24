@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CompraRepo extends JpaRepository<Compra, String> {
+public interface CompraRepo extends JpaRepository<Compra, Integer> {
     @Query("select c from Compra c where c.usuario.codigo = :codigoUsuario")
-    List<CompraGetDTO> listarCompras(int codigoUsuario);
+    List<Compra> listarComprasUsuario(int codigoUsuario);
     @Query("select c from Compra c where c.codigo = :codigoCompra")
     CompraGetDTO obtenerCompra(int codigoCompra);
 

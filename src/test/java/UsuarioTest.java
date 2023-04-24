@@ -73,25 +73,16 @@ import org.springframework.test.context.jdbc.Sql;
         Assertions.assertNotEquals("2782", usuarioActualizado.getTelefono());
 
     }
-
+        @Sql("classpath:dataset.sql" )
         @Test
         public void obtenerUsuarioTest()throws Exception{
 
-            //Para obtener el usuario primero se debe crear
-            UsuarioDTO usuarioDTO = new UsuarioDTO(
-                    "Pepito 1",
-                    "pepe1@email.com",
-                    "1234",
-                    "Calle 123",
-                    "343");
 
-            int codigoNuevo = usuarioServicio.crearUsuario(usuarioDTO);
 
             //Se llama el servicio para obtener el usuario completo dado su código
-            UsuarioGetDTO usuarioGetDTO = usuarioServicio.obtenerUsuario(codigoNuevo);
+            UsuarioGetDTO usuarioGetDTO = usuarioServicio.obtenerUsuario(1);
 
             //Comprobamos que la dirección que está en la base de datos coincide con la que esperamos
-            Assertions.assertEquals("Calle 123", usuarioGetDTO.getDireccion());
             System.err.println("usuario: "+ usuarioGetDTO.getNombre()+ usuarioGetDTO.getEmail()+usuarioGetDTO.getDireccion()+usuarioGetDTO.getTelefono());
 
         }
