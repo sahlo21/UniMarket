@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.jdbc.Sql;
 
 @SpringBootTest(classes = UniMarketApplication.class)
     @Transactional
@@ -33,22 +34,12 @@ import org.springframework.boot.test.context.SpringBootTest;
         System.err.println("usuario: "+usuarioDTO.getContrasena()+ usuarioDTO.getNombre()+ usuarioDTO.getEmail()+usuarioDTO.getDireccion()+usuarioDTO.getTelefono());
 
     }
-
         @Test
+        @Sql("classpath:dataset.sql")
         public void eliminarUsuarioTest() throws Exception{
 
-            //Para eliminar el usuario primero se debe crear
-            UsuarioDTO usuarioDTO = new UsuarioDTO(
-                    "Pepito 1",
-                    "pepe1@email.com",
-                    "1234",
-                    "Calle 123",
-                    "123123");
-
-            int codigo = usuarioServicio.crearUsuario(usuarioDTO);
-
             //Una vez creado, lo borramos
-            int codigoBorrado = usuarioServicio.eliminarUsuario(codigo);
+            int codigoBorrado = usuarioServicio.eliminarUsuario(1);
 
             //Si intentamos buscar un usuario con el codigo del usuario borrado debemos obtener una excepción indicando que ya no existe
             Assertions.assertThrows(Exception.class, () -> usuarioServicio.obtenerUsuario(codigoBorrado));
@@ -56,26 +47,32 @@ import org.springframework.boot.test.context.SpringBootTest;
         }
 
 
-        @Test
-        public void actualizarUsuarioTest() throws Exception{
+    @Sql("classpath:dataset.sql" )
+    @Test
+    public void actualizarUsuarioTest() throws Exception{
 
-            //Para actualizar el usuario primero se debe crear
-            UsuarioDTO usuarioDTO = new UsuarioDTO(
-                    "Pepito 1",
-                    "pepe1@email.com",
-                    "1234",
-                    "Calle 123",
-                    "343");
+        //Para actualizar el usuario primero se debe crear
 
-            int codigoNuevo = usuarioServicio.crearUsuario(usuarioDTO);
+        UsuarioGetDTO guardado = usuarioServicio.obtenerUsuario(1);
+        System.err.println("HOLAAAAAAA: "+guardado.getNombre());
+        UsuarioDTO modificado = new UsuarioDTO(
+                guardado.getNombre(),
+                guardado.getEmail(),
+                "contrasenia",
+                guardado.getDireccion(),
+                "8191");
+//
 
-            //El servicio de actualizar nos retorna el usuario
-            UsuarioGetDTO usuarioActualizado = usuarioServicio.actualizarUsuario(codigoNuevo, new UsuarioDTO("Pepito Perez", "pepe1@email.com", "1234", "Calle 123", "1111"));
+        //El servicio de actualizar nos retorna el usuario
 
-            //Se comprueba que ahora el teléfono del usuario no es el que se usó cuando se creó inicialmente
-            Assertions.assertNotEquals("2782", usuarioActualizado.getTelefono());
 
-        }
+        //El servicio de actualizar nos retorna el usuario
+        UsuarioGetDTO usuarioActualizado = usuarioServicio.actualizarUsuario(guardado.getCodigo(), modificado);
+
+        //Se comprueba que ahora el teléfono del usuario no es el que se usó cuando se creó inicialmente
+        Assertions.assertNotEquals("2782", usuarioActualizado.getTelefono());
+
+    }
 
         @Test
         public void obtenerUsuarioTest()throws Exception{
