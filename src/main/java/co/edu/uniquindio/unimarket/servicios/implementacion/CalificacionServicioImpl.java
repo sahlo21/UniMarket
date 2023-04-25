@@ -8,11 +8,9 @@ import co.edu.uniquindio.unimarket.modelo.entidades.Compra;
 import co.edu.uniquindio.unimarket.modelo.entidades.DetalleCompra;
 import co.edu.uniquindio.unimarket.repositorios.CalificacionRepo;
 import co.edu.uniquindio.unimarket.repositorios.ProductoRepo;
-import co.edu.uniquindio.unimarket.servicios.interfaces.CalificacionServicio;
-import co.edu.uniquindio.unimarket.servicios.interfaces.CompraServicio;
-import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
-import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
+import co.edu.uniquindio.unimarket.servicios.interfaces.*;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +18,8 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class CalificacionServicioImpl implements CalificacionServicio {
-
+    @Autowired
+    private final EmailServicio emailServicio;
     CalificacionRepo calificacionRepo;
     ProductoRepo productoRepo;
 

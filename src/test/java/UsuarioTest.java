@@ -99,7 +99,7 @@ import org.springframework.test.context.jdbc.Sql;
         //Comprobamos que la dirección que está en la base de datos coincide con la que esperamos
         System.err.println("usuario 1 : "+ usuarioGetDTO.getContrasena());
 
-        ContrasenaDTO contrasenaDTO = new ContrasenaDTO("aceituna","aceituna");
+        ContrasenaDTO contrasenaDTO = new ContrasenaDTO("aceituna2","aceituna2");
 
         Usuario pastUsuario = usuarioServicio.obtener(1);
 
@@ -124,14 +124,14 @@ import org.springframework.test.context.jdbc.Sql;
     @Sql("classpath:dataset.sql" )
     public void changePasswordRecuperated() throws Exception {
 
-        ContrasenaDTO contrasenaDTO = new ContrasenaDTO("1230302","1230302");
+        ContrasenaDTO contrasenaDTO = new ContrasenaDTO("contresanaxd","contresanaxd");
 
-        String contrasenaAnterior = usuarioRepo.buscarUsuario("pipecar366@gmail.com").getContrasena();
+        String contrasenaAnterior = usuarioRepo.buscarUsuario("kssm102001@gmail.com").getContrasena();
 
 
-        usuarioServicio.cambiarContrasenaRecuperada("pipecar366@gmail.com",contrasenaDTO);
+        usuarioServicio.cambiarContrasenaRecuperada("kssm102001@gmail.com",contrasenaDTO);
 
-        String nuevaContrasena = usuarioRepo.buscarUsuario("pipecar366@gmail.com").getContrasena();
+        String nuevaContrasena = usuarioRepo.buscarUsuario("kssm102001@gmail.com").getContrasena();
 
         Assertions.assertNotEquals(contrasenaAnterior,nuevaContrasena);
     }

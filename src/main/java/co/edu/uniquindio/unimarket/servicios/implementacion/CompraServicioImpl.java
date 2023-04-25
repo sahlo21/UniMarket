@@ -51,15 +51,15 @@ public class CompraServicioImpl implements CompraServicio {
         compra.setValorTotal(subtotal);
         compraRepo.save(compra);
 
-        String infoDetails= "<p>" + usuario.getNombre() + " ha realizado su transaccion con un valor de $" + subtotal + " con exito.</p>";
-        infoDetails+="<h3>Detalles de la transacción:</h3>";
+        String cuerpoCorreo= "<p>" + usuario.getNombre() + " ha hecho un compra por $" + subtotal + " existosamente.</p>";
+        cuerpoCorreo+="<h3>Detalles de la compra:</h3>";
 
         for (DetalleCompra detalleCompra :detalleCompraList) {
-            infoDetails+="<p><b>Producto:</b> " + detalleCompra.getProducto().getNombre() ;
+            cuerpoCorreo+="<p><b>Producto:</b> " + detalleCompra.getProducto().getNombre() ;
         }
-        System.out.println(infoDetails);
+        System.out.println(cuerpoCorreo);
 
-        emailServicio.enviarEmail(new EmailDTO("Transaccion realizada",infoDetails, usuario.getEmail()));
+        emailServicio.enviarEmail(new EmailDTO("Compra realizada con exito",cuerpoCorreo, usuario.getEmail()));
 
         return compra.getCodigo();
     }

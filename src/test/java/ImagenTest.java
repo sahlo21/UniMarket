@@ -29,21 +29,21 @@ public class ImagenTest {
 
     @Test
     public void subirIamgen() throws Exception {
-        File image = new File("src/test/resources/top.jpg");
+        File image = new File("src/test/resources/test.jpg");
 
-        Map<String, String> map = cloudinaryServicio.subirImagen(image, "unimarketImage");
+        Map<String, String> map = cloudinaryServicio.subirImagen(image, "/UnimarketCloud");
         Map<String, String> mapResponse = new HashMap<>();
 
         mapResponse.put(map.get("public_id"), map.get("url"));
 
         for(Map.Entry mp: mapResponse.entrySet()){
-            System.out.println(mp.getKey()+ ":" + mp.getValue());
+            System.err.println(mp.getKey()+ ":" + mp.getValue());
         }
 
     }
     @Test
     public void eliminarImagen() throws Exception {
-        cloudinaryServicio.eliminarImagen("v7xrni12wflfit2tw26p");
+        cloudinaryServicio.eliminarImagen("co/edu/uniquindio/proyecto/UnimarketCloud/agk1v3k699yetsyqyrig");
     }
 
 }

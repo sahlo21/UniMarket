@@ -23,13 +23,13 @@ insert into detalle_compra (codigo, precio, unidades, compra_codigo, producto_co
 insert into detalle_compra (codigo, precio, unidades, compra_codigo, producto_codigo) values (20, 2000, 6, 15, 10);
 
 insert into calificacion (codigo, estrellas, producto_codigo, usuario_codigo) values (21, 5, 6, 5);
-insert into calificacion (codigo, estrellas, producto_codigo, usuario_codigo) values (22, 4, 7, 4);
+insert into calificacion (codigo, estrellas, producto_codigo, usuario_codigo) values (22, 4, 6, 4);
 insert into calificacion (codigo, estrellas, producto_codigo, usuario_codigo) values (23, 1, 8, 2);
 insert into calificacion (codigo, estrellas, producto_codigo, usuario_codigo) values (24, 2, 9, 3);
 insert into calificacion (codigo, estrellas, producto_codigo, usuario_codigo) values (25, 3, 10, 1);
 
 insert into comentario (codigo, fecha_creacion, observacion, producto_codigo, usuario_codigo) values (26, '2023-03-18', "Epico", 6, 5);
-insert into comentario (codigo, fecha_creacion, observacion, producto_codigo, usuario_codigo) values (27, '2023-03-20', "Bueno", 7, 4);
+insert into comentario (codigo, fecha_creacion, observacion, producto_codigo, usuario_codigo) values (27, '2023-03-20', "Bueno", 6, 4);
 insert into comentario (codigo, fecha_creacion, observacion, producto_codigo, usuario_codigo) values (28, '2023-03-12', "Malisima calidad", 8, 2);
 insert into comentario (codigo, fecha_creacion, observacion, producto_codigo, usuario_codigo) values (29, '2023-03-15', "No vale la pena", 9, 3);
 insert into comentario (codigo, fecha_creacion, observacion, producto_codigo, usuario_codigo) values (30, '2023-03-17', "Esta meh", 10, 1);
