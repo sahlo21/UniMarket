@@ -4,6 +4,7 @@ import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -19,7 +20,7 @@ public class Comentario implements Serializable {
     private int codigo;
     @Column(nullable = false, length = 250)
     private String observacion;
-    private LocalDate fechaCreacion;
+    private LocalDateTime fechaCreacion;
     @ManyToOne
     private Producto producto;
     @ManyToOne

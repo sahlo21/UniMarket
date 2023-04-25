@@ -39,7 +39,7 @@ import java.util.List;
 
     }
     @Test
-    public void obtenerProducto()throws Exception{
+    public void obtenerCompra()throws Exception {
 
         CompraDTO compraDTO = new CompraDTO(
                 1,
@@ -59,8 +59,6 @@ import java.util.List;
         System.err.println("compra: " + compraDTO.getValorTotal() + compraDTO.getMedioPago());
 
     }
-    @Test
-    public void listarCompraUsuario()throws Exception
 
 
 
