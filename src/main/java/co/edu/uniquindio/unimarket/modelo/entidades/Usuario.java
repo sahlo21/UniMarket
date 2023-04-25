@@ -16,8 +16,8 @@ public class Usuario extends Persona implements Serializable  {
     private String telefono;
     @Column(nullable = false, length = 100)
     private String direccion;
-    @OneToMany(mappedBy = "usuario")
-    private List<FavoritosProductos> favotirosProductosList;
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Producto> productoFavList;
     @OneToMany(mappedBy="usuario")
     private List<Compra> compraList;
     @OneToMany(mappedBy = "usuario")

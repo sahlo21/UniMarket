@@ -7,6 +7,7 @@ import co.edu.uniquindio.unimarket.repositorios.ProductoRepo;
 import co.edu.uniquindio.unimarket.repositorios.UsuarioRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.*;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -19,10 +20,12 @@ import java.util.Optional;
 public class CompraServicioImpl implements CompraServicio {
     private final CompraRepo compraRepo;
     private final ProductoRepo productoRepo;
+    @Autowired
     private final UsuarioServicio usuarioServicio;
+    @Autowired
     private final EmailServicio emailServicio;
-
-    private final DetallePrestamoServicio detallePrestamoServicio;
+    //@Autowired
+   // private final DetallePrestamoServicio detallePrestamoServicio;
     @Override
     public int crearCompra(CompraDTO compraDTO) throws Exception {
 
@@ -38,7 +41,8 @@ public class CompraServicioImpl implements CompraServicio {
         float subtotal=0;
 
         for (DetalleCompraDTO detalleCompraDTO: compraDTO.getDetalleCompraList()) {
-            DetalleCompra detalleCompra = detallePrestamoServicio.crearDetallePrestamo(detalleCompraDTO, compra);
+           // DetalleCompra detalleCompra = detallePrestamoServicio.crearDetallePrestamo(detalleCompraDTO, compra);
+            DetalleCompra detalleCompra=null;
             detalleCompraList.add(detalleCompra);
             subtotal+=detalleCompra.getPrecio();
         }

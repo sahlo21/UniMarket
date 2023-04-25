@@ -12,7 +12,8 @@ import java.io.Serializable;
 @Setter
 public class CalificacionDTO  {
 
-    private int codigo;
+    private int codigoProducto;
+    private int codigoUsuario;
 
     private int estrellas;
 }

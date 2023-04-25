@@ -83,57 +83,83 @@ public class ProductoTest {
     }
     @Sql("classpath:dataset.sql" )
     @Test
-    public void listarNombre()throws Exception{
+    public void listarProductodUsuario()throws Exception{
 
-        UsuarioDTO usuarioDTO = new UsuarioDTO(
-                "Pepito 1",
-                "pepe1@email.com",
-                "1234",
-                "12345",
-                "Calle 123");
-
-
-        //El servicio del usuario nos retorna el código con el que quedó en la base de datos
-        int codigoUsuario = usuarioServicio.crearUsuario(usuarioDTO);
-
-        //Se crea la colección de imágenes para el producto.
-        List<Imagen> imagenes = new ArrayList<>();
-        Imagen imagen = new Imagen();
-        imagen.setRuta("http://www.google.com/images/imagenasus.png");
-        imagenes.add(imagen);
-
-
-        //Se crea el producto y se usa el código dado por el servicio de registro de usuario para asignar el vendedor
-        ProductoDTO productoDTO = new ProductoDTO(
-                codigoUsuario,
-                Estado.SIN_REVISAR,
-                1,
-                "Computador Asus 1",
-                "Es el mejor computador portatil que el dinero pueda comprar",
-                7000000,
-                imagenes,
-                List.of(Categoria.TECNOLOGIA));
-
-        //Se llama el servicio para crear el producto
-         productoServicio.crearProducto( productoDTO );
-
-        //Se crea el producto y se usa el código dado por el servicio de registro de usuario para asignar el vendedor
-         productoDTO = new ProductoDTO(
-                codigoUsuario,
-                Estado.SIN_REVISAR,
-                1,
-                "Computador Asus 2 ",
-                "Es el mejor computador portatil que el dinero pueda comprar",
-                7000000,
-                imagenes,
-                List.of(Categoria.TECNOLOGIA));
-
-        //Se llama el servicio para crear el producto
-        productoServicio.crearProducto( productoDTO );
-
-        for(ProductoGetDTO producto :productoServicio.listarProductosUsuario(codigoUsuario)) {
+        for(ProductoGetDTO producto :productoServicio.listarProductosUsuario(1)) {
             System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+producto.getCodigoVendedor()+"   ");
 
         }
     }
+    @Sql("classpath:dataset.sql" )
+    @Test
+    public void actualizarProducto()throws Exception{}
+    @Sql("classpath:dataset.sql" )
+    @Test
+    public void eliminarProducto()throws Exception{}
+
+    @Sql("classpath:dataset.sql" )
+    @Test
+    public void listarProductosCategoria()throws Exception{
+        //for(ProductoGetDTO producto :productoServicio.listarProductosCategoria(Categoria.ACCESORIOS)) {
+          //  System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+producto.getCodigoVendedor()+"   ");
+
+        //}
+    }
+
+    @Sql("classpath:dataset.sql" )
+    @Test
+    public void listarProductosEstado()throws Exception{
+        for(ProductoGetDTO producto :productoServicio.listarProductosEstado(Estado.SIN_REVISAR)) {
+            System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+producto.getCodigoVendedor()+"   ");
+
+        }
+    }
+
+    @Sql("classpath:dataset.sql" )
+    @Test
+    public void listarProductosFavoritos()throws Exception{
+        for(ProductoGetDTO producto :productoServicio.listarProductosFavoritos(1)) {
+            System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+producto.getCodigoVendedor()+"   ");
+
+        }
+    }
+
+    @Sql("classpath:dataset.sql" )
+    @Test
+    public void listarProductosPrecio()throws Exception{
+        for(ProductoGetDTO producto :productoServicio.listarProductosPrecio(1000, 15001)) {
+            System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+producto.getCodigoVendedor()+"   ");
+
+        }
+    }
+
+    @Sql("classpath:dataset.sql" )
+    @Test
+    public void listarProductosNombre()throws Exception{
+        for(ProductoGetDTO producto :productoServicio.listarProductosNombre("Lapiz")) {
+            System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+producto.getCodigoVendedor()+"   ");
+
+        }
+    }
+
+    @Sql("classpath:dataset.sql" )
+    @Test
+    public void guardarFavorito()throws Exception{
+
+
+        productoServicio.guardarFavorito(6,1);
+        productoServicio.guardarFavorito(7,1);
+
+        for(Producto producto :usuarioServicio.obtener(1).getProductoFavList()) {
+            System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+"   ");
+
+        }
+    }
+
+    @Sql("classpath:dataset.sql" )
+    @Test
+    public void eliminarFavorito()throws Exception {
+        productoServicio.eliminarFavorito(6, 1);
+    }
+
 }

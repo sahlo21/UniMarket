@@ -47,8 +47,10 @@ public class Producto implements Serializable {
     private List<Imagen> imagenList;
     @OneToMany(mappedBy="producto")
     private List<Calificacion> calificacionList;
-    @OneToMany(mappedBy = "producto")
-    private List<FavoritosProductos> favotirosProductosList;
+
+    @ManyToMany(mappedBy = "productoFavList",cascade = CascadeType.ALL)
+    private List<Usuario> usuarioFavList;
+
     @OneToMany(mappedBy = "producto")
     private List<DetalleCompra> detalleCompraList;
     @OneToMany(mappedBy = "producto")

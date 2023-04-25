@@ -1,4 +1,4 @@
-insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (1, "aceituna", "pepito@gmail.com", "pepito", "Calle 11 # 2 - 33","7506789");
+insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (1, "aceituna", "kssm102001@gmail.com", "pepito", "Calle 11 # 2 - 33","7506789");
 insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (2, "brocoli", "juanita@gmail.com", "juanita", "Calle 12 # 1 - 63","3152089978");
 insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (3, "perejil", "andrea@gmail.com", "andrea", "Calle 13 # 2 - 13","3102089978");
 insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (4, "cilantro", "kevin@gmail.com", "kevin", "Calle 14 # 3 - 23","3212089978");
@@ -40,11 +40,11 @@ insert into cupon (codigo, valor) values (33, 25000);
 insert into cupon (codigo, valor) values (34, 5000);
 insert into cupon (codigo, valor) values (35, 24999);
 
-insert into favoritos_productos (id_favorito_producto, producto_codigo, usuario_codigo) values (36, 6, 5);
-insert into favoritos_productos (id_favorito_producto, producto_codigo, usuario_codigo) values (37, 7, 4);
-insert into favoritos_productos (id_favorito_producto, producto_codigo, usuario_codigo) values (38, 8, 2);
-insert into favoritos_productos (id_favorito_producto, producto_codigo, usuario_codigo) values (39, 9, 3);
-insert into favoritos_productos (id_favorito_producto, producto_codigo, usuario_codigo) values (40, 10, 1);
+insert into usuario_producto_fav_list ( producto_codigo, usuario_codigo) values ( 1, 8);
+insert into usuario_producto_fav_list ( producto_codigo, usuario_codigo) values ( 2, 7);
+insert into usuario_producto_fav_list ( producto_codigo, usuario_codigo) values ( 3, 8);
+insert into usuario_producto_fav_list ( producto_codigo, usuario_codigo) values ( 4, 9);
+insert into usuario_producto_fav_list ( producto_codigo, usuario_codigo) values ( 5, 10);
 
 insert into imagen (id_imagen, ruta, producto_codigo) values (41, "C:\imagen\lapiz.jpg", 6);
 insert into imagen (id_imagen, ruta, producto_codigo) values (42, "C:\imagen\ladrillo.jpg", 7);

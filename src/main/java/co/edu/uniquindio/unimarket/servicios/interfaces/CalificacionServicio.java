@@ -9,9 +9,9 @@ import java.util.List;
 
 public interface CalificacionServicio {
 
-    int crearCalificacion(CalificacionDTO calificacionDTO);
+    int crearCalificacion(CalificacionDTO calificacionDTO) throws Exception;
 
-    List<CalificacionDTO> listarCalificacion(int codigoProducto);
+    List<Calificacion> listarCalificacion(int codigoProducto);
 
-    float promediarCalificaciones(List<CalificacionDTO> calificacionDTOList);
+    float promediarCalificaciones(List<Calificacion> calificacionDTOList);
 }

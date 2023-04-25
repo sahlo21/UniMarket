@@ -27,14 +27,10 @@ import java.util.List;
         List<DetalleCompraDTO> detalleCompraDTOS = new ArrayList<>();
 
         DetalleCompraDTO detalleCompraDTO = new DetalleCompraDTO(
-                6,
-                2
-        );
-        detalleCompraDTOS.add(detalleCompraDTO);
-         detalleCompraDTO = new DetalleCompraDTO(
                 7,
                 1
         );
+
 
         detalleCompraDTOS.add(detalleCompraDTO);
 

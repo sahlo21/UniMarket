@@ -14,6 +14,7 @@ import co.edu.uniquindio.unimarket.servicios.interfaces.EmailServicio;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,30 +26,35 @@ public class DetalleCompraServicioImpl implements DetallePrestamoServicio {
     private final CompraRepo compraRepo;
     private final DetalleCompraRepo detalleCompraRepo;
     private final ProductoRepo productoRepo;
+    @Autowired
     private final UsuarioServicio usuarioServicio;
-    private final ProductoServicio productoServicio;
+    //@Autowired
+    //private final ProductoServicio productoServicio;
+    @Autowired
     private final EmailServicio emailServicio;
 
     @Override
     public DetalleCompra crearDetallePrestamo(DetalleCompraDTO detalleCompraDTO, Compra compra) throws Exception {
         DetalleCompra detalleCompra = new DetalleCompra();
 
-        Producto product = productoServicio.obtener(detalleCompraDTO.getCodigoProducto());
+       // Producto producto = productoServicio.obtener(detalleCompraDTO.getCodigoProducto());
+        Producto producto = null;
+
         int unidades = detalleCompraDTO.getUnidades();
 
-        if(product.getUnidades()<unidades){
-            throw new Exception("No existen las suficientes unidades del producto " + product.getNombre());
+        if(producto.getUnidades()<unidades){
+            throw new Exception("No existen las suficientes unidades del producto " + producto.getNombre());
         }
         detalleCompra.setCompra(compra);
-        detalleCompra.setProducto(product);
+        detalleCompra.setProducto(producto);
         detalleCompra.setUnidades(unidades);
-        detalleCompra.setPrecio(calculateTotal(product,unidades));
+        detalleCompra.setPrecio(calculateTotal(producto,unidades));
 
         detalleCompraRepo.save(detalleCompra);
-        String destinario=product.getUsuario().getEmail();
-        emailServicio.enviarEmail(new EmailDTO("Transaccion realizada","Ha vendido " + unidades + " unidades de su producto " + product.getNombre() , destinario));
+        String destinario=producto.getUsuario().getEmail();
+        emailServicio.enviarEmail(new EmailDTO("Transaccion realizada","Ha vendido " + unidades + " unidades de su producto " + producto.getNombre() , destinario));
 
-        productoServicio.disminuirUnidades(product,unidades);
+        //productoServicio.actualizarUnidades(producto,unidades);
 
         return detalleCompra;
     }

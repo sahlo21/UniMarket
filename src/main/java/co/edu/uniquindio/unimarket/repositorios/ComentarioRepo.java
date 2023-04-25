@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface ComentarioRepo extends JpaRepository<Comentario, Integer> {
     @Query("select cm from Comentario cm where cm.producto.codigo = :codigoProducto")
-    List<ComentarioGetDTO> listarComentarios(int codigoProducto);
+    List<Comentario> listarComentarios(int codigoProducto);
 
 }
