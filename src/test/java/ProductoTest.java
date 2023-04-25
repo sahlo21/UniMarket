@@ -147,8 +147,8 @@ public class ProductoTest {
     public void guardarFavorito()throws Exception{
 
 
-        productoServicio.guardarFavorito(6,1);
         productoServicio.guardarFavorito(7,1);
+        productoServicio.guardarFavorito(8,1);
 
         for(Producto producto :usuarioServicio.obtener(1).getProductoFavList()) {
             System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+"   ");
@@ -159,7 +159,18 @@ public class ProductoTest {
     @Sql("classpath:dataset.sql" )
     @Test
     public void eliminarFavorito()throws Exception {
+        for(Producto producto :usuarioServicio.obtener(1).getProductoFavList()) {
+            System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+"   ");
+
+        }
+
         productoServicio.eliminarFavorito(6, 1);
+        System.out.println("AJSHDASDJAHSJDAHS");
+
+        for(Producto producto :usuarioServicio.obtener(1).getProductoFavList()) {
+            System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+"   ");
+
+        }
     }
 
 }

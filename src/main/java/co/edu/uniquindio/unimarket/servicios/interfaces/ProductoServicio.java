@@ -20,7 +20,6 @@ public interface ProductoServicio {
     List<ProductoGetDTO> listarProductosFavoritos(int codigoUsuario);
     List<ProductoGetDTO> listarProductosPrecio(float precioMinimo, float precioMaximo);
     List<ProductoGetDTO> listarProductosNombre(String nombre);
-    void actualizarUnidades(Producto producto,int unidades);
     void guardarFavorito(int codigoProducto, int codigoUsuario) throws Exception;
      void eliminarFavorito(int codigoProducto, int codigoUsuario) throws Exception;
 }

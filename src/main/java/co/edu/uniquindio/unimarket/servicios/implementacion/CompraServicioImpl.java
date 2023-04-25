@@ -24,8 +24,8 @@ public class CompraServicioImpl implements CompraServicio {
     private final UsuarioServicio usuarioServicio;
     @Autowired
     private final EmailServicio emailServicio;
-    //@Autowired
-   // private final DetallePrestamoServicio detallePrestamoServicio;
+    @Autowired
+   private final DetallePrestamoServicio detallePrestamoServicio;
     @Override
     public int crearCompra(CompraDTO compraDTO) throws Exception {
 
@@ -41,8 +41,8 @@ public class CompraServicioImpl implements CompraServicio {
         float subtotal=0;
 
         for (DetalleCompraDTO detalleCompraDTO: compraDTO.getDetalleCompraList()) {
-           // DetalleCompra detalleCompra = detallePrestamoServicio.crearDetallePrestamo(detalleCompraDTO, compra);
-            DetalleCompra detalleCompra=null;
+           DetalleCompra detalleCompra = detallePrestamoServicio.crearDetallePrestamo(detalleCompraDTO, compra);
+
             detalleCompraList.add(detalleCompra);
             subtotal+=detalleCompra.getPrecio();
         }

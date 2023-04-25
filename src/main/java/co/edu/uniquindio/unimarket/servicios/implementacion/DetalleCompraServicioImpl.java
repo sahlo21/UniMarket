@@ -11,7 +11,6 @@ import co.edu.uniquindio.unimarket.repositorios.DetalleCompraRepo;
 import co.edu.uniquindio.unimarket.repositorios.ProductoRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.DetallePrestamoServicio;
 import co.edu.uniquindio.unimarket.servicios.interfaces.EmailServicio;
-import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +36,8 @@ public class DetalleCompraServicioImpl implements DetallePrestamoServicio {
     public DetalleCompra crearDetallePrestamo(DetalleCompraDTO detalleCompraDTO, Compra compra) throws Exception {
         DetalleCompra detalleCompra = new DetalleCompra();
 
-       // Producto producto = productoServicio.obtener(detalleCompraDTO.getCodigoProducto());
-        Producto producto = null;
+       Producto producto = productoRepo.obtenerProducto(detalleCompraDTO.getCodigoProducto());
+
 
         int unidades = detalleCompraDTO.getUnidades();
 
@@ -54,9 +53,20 @@ public class DetalleCompraServicioImpl implements DetallePrestamoServicio {
         String destinario=producto.getUsuario().getEmail();
         emailServicio.enviarEmail(new EmailDTO("Transaccion realizada","Ha vendido " + unidades + " unidades de su producto " + producto.getNombre() , destinario));
 
-        //productoServicio.actualizarUnidades(producto,unidades);
+        actualizarUnidades(producto,unidades);
 
         return detalleCompra;
+    }
+    @Override
+    public void actualizarUnidades(Producto producto, int unidadess){
+
+        int unidades = producto.getUnidades();
+        int unidadesAux= unidades-unidadess;
+
+        producto.setUnidades(unidadesAux);
+
+        productoRepo.save(producto);
+
     }
     private float calculateTotal(Producto producto, int unidades) {
 

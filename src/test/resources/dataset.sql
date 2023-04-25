@@ -5,7 +5,7 @@ insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) val
 insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (5, "puerro", "juancho@gmail.com", "juan", "Calle 15 # 17 - 43","3178586989");
 
 insert into producto (codigo, descripcion, estado, fecha_creacion, fecha_limite, nombre, precio, unidades, usuario_codigo) values (6, "Sirve para escribir", "SIN_REVISAR", '2023-02-28', '2023-03-28', "lapiz", 15000, 17, 1);
-insert into producto (codigo, descripcion, estado, fecha_creacion, fecha_limite, nombre, precio, unidades, usuario_codigo) values (7, "Se utiliza en la construccion", "AUTORIZADOS", '2023-02-25', '2023-03-25', "ladrillos", 1700, 1, 2);
+insert into producto (codigo, descripcion, estado, fecha_creacion, fecha_limite, nombre, precio, unidades, usuario_codigo) values (7, "Se utiliza en la construccion", "AUTORIZADOS", '2023-02-25', '2023-03-25', "ladrillos", 1700, 10, 2);
 insert into producto (codigo, descripcion, estado, fecha_creacion, fecha_limite, nombre, precio, unidades, usuario_codigo) values (8, "Utiles para el mal aliento", "SIN_REVISAR", '2023-02-23', '2023-03-23', "mentas", 100, 100, 3);
 insert into producto (codigo, descripcion, estado, fecha_creacion, fecha_limite, nombre, precio, unidades, usuario_codigo) values (9, "Para mejorar bebidas", "NO_AUTORIZADOS", '2023-02-10', '2023-03-10', "azucar", 17000, 30, 4);
 insert into producto (codigo, descripcion, estado, fecha_creacion, fecha_limite, nombre, precio, unidades, usuario_codigo) values (10, "Vienen de un pato", "AUTORIZADOS", '2023-02-15', '2023-03-15', "plumas", 5000, 25, 5);
@@ -40,11 +40,7 @@ insert into cupon (codigo, valor) values (33, 25000);
 insert into cupon (codigo, valor) values (34, 5000);
 insert into cupon (codigo, valor) values (35, 24999);
 
-insert into usuario_producto_fav_list ( producto_codigo, usuario_codigo) values ( 1, 8);
-insert into usuario_producto_fav_list ( producto_codigo, usuario_codigo) values ( 2, 7);
-insert into usuario_producto_fav_list ( producto_codigo, usuario_codigo) values ( 3, 8);
-insert into usuario_producto_fav_list ( producto_codigo, usuario_codigo) values ( 4, 9);
-insert into usuario_producto_fav_list ( producto_codigo, usuario_codigo) values ( 5, 10);
+
 
 insert into imagen (id_imagen, ruta, producto_codigo) values (41, "C:\imagen\lapiz.jpg", 6);
 insert into imagen (id_imagen, ruta, producto_codigo) values (42, "C:\imagen\ladrillo.jpg", 7);
@@ -81,3 +77,9 @@ insert into usuario_cupones (id_favorito_producto, cupon_codigo, usuario_codigo)
 insert into usuario_cupones (id_favorito_producto, cupon_codigo, usuario_codigo) values (58, 33, 5);
 insert into usuario_cupones (id_favorito_producto, cupon_codigo, usuario_codigo) values (59, 34, 4);
 insert into usuario_cupones (id_favorito_producto, cupon_codigo, usuario_codigo) values (60, 35, 2);
+
+insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 1, 6);
+insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 2, 7);
+insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 3, 6);
+insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 4, 8);
+insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 5, 10);

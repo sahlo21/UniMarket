@@ -118,17 +118,6 @@ public class ProductoServicioImpl implements ProductoServicio {
        }
         return respuesta;
     }
-    @Override
-    public void actualizarUnidades(Producto product, int unities){
-
-        int unidades = product.getUnidades();
-        int unidadesAux= unidades-unities;
-
-        product.setUnidades(unidadesAux);
-
-        productoRepo.save(product);
-
-    }
 
     @Override
     public void guardarFavorito(int codigoProducto, int codigoUsuario) throws Exception {
