@@ -40,11 +40,11 @@ public class ComentarioServicioImpl implements ComentarioServicio {
         comentario.setFechaCreacion(LocalDateTime.now());
         comentario.setProducto(productoRepo.obtenerProducto(comentarioDTO.getCodigoProducto()));
 
-        String cuerpoCorreo= "<p>" + comentario.getUsuario().getNombre() + " ha comentado en tu producto "+comentario.getProducto().getNombre()+"lo siguiente: " + comentario.getObservacion().</p>";
+        String cuerpoCorreo= "<p>" + comentario.getUsuario().getNombre() + " ha comentado en tu producto "+comentario.getProducto().getNombre()+"lo siguiente: " + comentario.getObservacion()+"</p>";
         cuerpoCorreo+="<h3>Comentario producto:</h3>";
 
 
-        emailServicio.enviarEmail(new EmailDTO("Alguien ha comentado tu producto",cuerpoCorreo, usuario.getEmail()));
+        emailServicio.enviarEmail(new EmailDTO("Alguien ha comentado tu producto",cuerpoCorreo, comentario.getUsuario().getEmail()));
 
         return comentarioRepo.save( comentario ).getCodigo();
     }

@@ -23,8 +23,13 @@ public interface ProductoRepo extends JpaRepository<Producto, Integer> {
     List<Producto> listarProductosCategoria(Categoria categoria);
     @Query("select p from Producto p where p.estado = :estado")
     List<Producto> listarProductosEstado(Estado estado);
+<<<<<<< HEAD
     //@Query("select p from Producto p where :codigoUsuario member of p.usuarioFavList")
     //List<Producto> listarProductosFavoritos(int codigoUsuario);
+=======
+    @Query("select p from Producto p join p.usuarioFavList uf on p.codigo = uf.codigo where uf.codigo = :codigoUsuario AND :codigoUsuario member of p.usuarioFavList")
+    List<Producto> listarProductosFavoritos(int codigoUsuario);
+>>>>>>> b260f379f56c8973c9ff79aeb23dcead4ec46a0c
     @Query("select p from Producto p where p.precio >= :precioMinimo AND p.precio <= :precioMaximo")
     List<Producto> listarProductosPrecio(float precioMinimo, float precioMaximo);
 
