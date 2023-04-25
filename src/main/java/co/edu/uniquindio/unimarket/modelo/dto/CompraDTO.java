@@ -12,8 +12,9 @@ import java.util.List;
 @Getter
 @Setter
 public class CompraDTO {
-    private int codigo;
+    private int codigoUsuario;
     private MedioPago medioPago;
-    private float valorTotal;
-    private List<DetalleCompra> detalleCompraList;
+;
+    private List<DetalleCompraDTO> detalleCompraList;
+
 }

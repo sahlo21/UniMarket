@@ -84,7 +84,17 @@ public class ProductoServicioImpl implements ProductoServicio {
        }
         return respuesta;
     }
+    @Override
+    public void disminuirUnidades(Producto product, int unities){
 
+        int oldUnitiesProduct = product.getUnidades();
+        int subtractionUnities = oldUnitiesProduct-unities;
+
+        product.setUnidades(subtractionUnities);
+
+        productoRepo.save(product);
+
+    }
     private ProductoGetDTO convertir(Producto producto){
 
         ProductoGetDTO productoGetDTO = new ProductoGetDTO(

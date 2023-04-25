@@ -15,6 +15,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @SpringBootTest(classes = UniMarketApplication.class)
@@ -25,20 +27,23 @@ public class ImagenTest {
     private CloudinaryServicio cloudinaryServicio;
 
 
-
     @Test
-    public void subirImagen()throws Exception{
+    public void subirIamgen() throws Exception {
+        File image = new File("src/test/resources/top.jpg");
 
-        File fichero = new File("C://Users//kssm1//OneDrive//Documentos//GitHub//Marketplace//info//iconMarketplace.png");
+        Map<String, String> map = cloudinaryServicio.subirImagen(image, "unimarketImage");
+        Map<String, String> mapResponse = new HashMap<>();
 
+        mapResponse.put(map.get("public_id"), map.get("url"));
 
-        cloudinaryServicio.subirImagen(fichero, "Unimarket");
+        for(Map.Entry mp: mapResponse.entrySet()){
+            System.out.println(mp.getKey()+ ":" + mp.getValue());
+        }
 
-
-
-
-
-
+    }
+    @Test
+    public void eliminarImagen() throws Exception {
+        cloudinaryServicio.eliminarImagen("v7xrni12wflfit2tw26p");
     }
 
 }

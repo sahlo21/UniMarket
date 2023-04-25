@@ -5,9 +5,7 @@ import co.edu.uniquindio.unimarket.modelo.entidades.*;
 import co.edu.uniquindio.unimarket.repositorios.CompraRepo;
 import co.edu.uniquindio.unimarket.repositorios.ProductoRepo;
 import co.edu.uniquindio.unimarket.repositorios.UsuarioRepo;
-import co.edu.uniquindio.unimarket.servicios.interfaces.CompraServicio;
-import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
-import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
+import co.edu.uniquindio.unimarket.servicios.interfaces.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,46 +18,59 @@ import java.util.Optional;
 @AllArgsConstructor
 public class CompraServicioImpl implements CompraServicio {
     private final CompraRepo compraRepo;
+    private final ProductoRepo productoRepo;
+    private final UsuarioServicio usuarioServicio;
+    private final EmailServicio emailServicio;
 
+    private final DetallePrestamoServicio detallePrestamoServicio;
     @Override
-    public int crearCompra(CompraDTO compraDTO){
+    public int crearCompra(CompraDTO compraDTO) throws Exception {
 
-
-        Compra compra = convertir(compraDTO);
-        return compraRepo.save( compra ).getCodigo();
-    }
-
-    private Compra convertir(CompraDTO compraDTO) {
         Compra compra = new Compra();
-        compra.setDetalleCompraList(compraDTO.getDetalleCompraList());
-        compra.setFechaCreacion(LocalDateTime.now());
+
         compra.setMedioPago(compraDTO.getMedioPago());
-        compra.setValorTotal(compraDTO.getValorTotal());
-        return compra;
-    }
-    private CompraGetDTO convertir(Compra compra){
+        Usuario usuario = usuarioServicio.obtener(compraDTO.getCodigoUsuario());
+        compra.setUsuario(usuario);
+        compra.setFechaCreacion(LocalDateTime.now());
 
-        CompraGetDTO compraGetDTO = new CompraGetDTO(
-                compra.getCodigo(),
-                compra.getFechaCreacion(),
-                compra.getValorTotal(),
-                compra.getMedioPago(),
-                compra.getDetalleCompraList()
-        );
+        List<DetalleCompra> detalleCompraList = new ArrayList<>();
 
-        return compraGetDTO;
+        float subtotal=0;
+
+        for (DetalleCompraDTO detalleCompraDTO: compraDTO.getDetalleCompraList()) {
+            DetalleCompra detalleCompra = detallePrestamoServicio.crearDetallePrestamo(detalleCompraDTO, compra);
+            detalleCompraList.add(detalleCompra);
+            subtotal+=detalleCompra.getPrecio();
+        }
+
+        compra.setDetalleCompraList(detalleCompraList);
+        compra.setValorTotal(subtotal);
+        compraRepo.save(compra);
+
+        String infoDetails= "<p>" + usuario.getNombre() + " ha realizado su transaccion con un valor de $" + subtotal + " con exito.</p>";
+        infoDetails+="<h3>Detalles de la transacción:</h3>";
+
+        for (DetalleCompra detalleCompra :detalleCompraList) {
+            infoDetails+="<p><b>Producto:</b> " + detalleCompra.getProducto().getNombre() ;
+        }
+        System.out.println(infoDetails);
+
+        emailServicio.enviarEmail(new EmailDTO("Transaccion realizada",infoDetails, usuario.getEmail()));
+
+        return compra.getCodigo();
     }
+
+
+
 
     @Override
-    public List<CompraGetDTO> listarComprasUsuario(int codigoUsuario) {
+    public List<Compra> listarComprasUsuario(int codigoUsuario) {
 
         List<Compra> lista = compraRepo.listarComprasUsuario(codigoUsuario);
-        List<CompraGetDTO> respuesta = new ArrayList<>();
 
-        for (Compra compra : lista) {
-            respuesta.add(convertir(compra));
-        }
-        return respuesta;
+
+
+        return lista;
     }
     @Override
     public Compra obtenerCompra(int codigoCompra) {
