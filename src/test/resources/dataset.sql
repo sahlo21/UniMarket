@@ -80,6 +80,6 @@ insert into usuario_cupones (id_favorito_producto, cupon_codigo, usuario_codigo)
 
 insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 1, 6);
 insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 2, 7);
-insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 3, 6);
+insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 1, 6);
 insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 4, 8);
 insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 5, 10);
