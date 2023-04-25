@@ -12,7 +12,9 @@ import java.util.List;
 public interface DetallePrestamoServicio {
 
     DetalleCompra crearDetallePrestamo(DetalleCompraDTO detalleCompraDTO, Compra comrpa) throws Exception;
+
     void actualizarUnidades(Producto product, int unities);
+
     List<DetalleCompraGetDTO> listarDetallePorCompra(int idTransaction);
     DetalleCompraGetDTO obtenerDetalleCompraDTO(int idTransactionDetail) throws Exception;
     DetalleCompra obtenerDetalleCompra(int codigoDetalle) throws Exception;
