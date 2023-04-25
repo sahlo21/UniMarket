@@ -11,13 +11,13 @@ insert into producto (codigo, descripcion, estado, fecha_creacion, fecha_limite,
 insert into producto (codigo, descripcion, estado, fecha_creacion, fecha_limite, nombre, precio, unidades, usuario_codigo) values (10, "Vienen de un pato", "AUTORIZADOS", '2023-02-15', '2023-03-15', "plumas", 5000, 25, 5);
 
 insert into compra (codigo, fecha_creacion, medio_pago, valor_total, usuario_codigo) values (11, '2023-03-18', "EFECTY", 18000, 1);
-insert into compra (codigo, fecha_creacion, medio_pago, valor_total, usuario_codigo) values (12, '2023-03-19', "PSE", 20000, 2);
+insert into compra (codigo, fecha_creacion, medio_pago, valor_total, usuario_codigo) values (12, '2023-03-19', "PSE", 20000, 1);
 insert into compra (codigo, fecha_creacion, medio_pago, valor_total, usuario_codigo) values (13, '2023-03-20', "TARJETA_CREDITO", 8000, 3);
 insert into compra (codigo, fecha_creacion, medio_pago, valor_total, usuario_codigo) values (14, '2023-03-8', "TARJETA_DEBITO", 100, 4);
 insert into compra (codigo, fecha_creacion, medio_pago, valor_total, usuario_codigo) values (15, '2023-03-12', "PSE", 3000, 5);
 
 insert into detalle_compra (codigo, precio, unidades, compra_codigo, producto_codigo) values (16, 17000, 10, 11, 6);
-insert into detalle_compra (codigo, precio, unidades, compra_codigo, producto_codigo) values (17, 19000, 3, 12, 7);
+insert into detalle_compra (codigo, precio, unidades, compra_codigo, producto_codigo) values (17, 19000, 3, 11, 7);
 insert into detalle_compra (codigo, precio, unidades, compra_codigo, producto_codigo) values (18, 7000, 7, 13, 8);
 insert into detalle_compra (codigo, precio, unidades, compra_codigo, producto_codigo) values (19, 90, 1, 14, 9);
 insert into detalle_compra (codigo, precio, unidades, compra_codigo, producto_codigo) values (20, 2000, 6, 15, 10);
@@ -79,7 +79,7 @@ insert into usuario_cupones (id_favorito_producto, cupon_codigo, usuario_codigo)
 insert into usuario_cupones (id_favorito_producto, cupon_codigo, usuario_codigo) values (60, 35, 2);
 
 insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 1, 6);
-insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 2, 7);
+insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 1, 7);
 insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 3, 6);
 insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 4, 8);
 insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 5, 10);

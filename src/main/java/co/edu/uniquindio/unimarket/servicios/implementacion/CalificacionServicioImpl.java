@@ -7,6 +7,7 @@ import co.edu.uniquindio.unimarket.modelo.entidades.Calificacion;
 import co.edu.uniquindio.unimarket.modelo.entidades.Compra;
 import co.edu.uniquindio.unimarket.modelo.entidades.DetalleCompra;
 import co.edu.uniquindio.unimarket.repositorios.CalificacionRepo;
+import co.edu.uniquindio.unimarket.repositorios.ProductoRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.CalificacionServicio;
 import co.edu.uniquindio.unimarket.servicios.interfaces.CompraServicio;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
@@ -21,21 +22,19 @@ import java.util.List;
 public class CalificacionServicioImpl implements CalificacionServicio {
 
     CalificacionRepo calificacionRepo;
+    ProductoRepo productoRepo;
 
     private final UsuarioServicio usuarioServicio;
 
-    //private final ProductoServicio productoServicio;
+
 
     @Override
     public int crearCalificacion(CalificacionDTO calificacionDTO) throws Exception {
-        /**
         Calificacion calificacion = new Calificacion();
     calificacion.setUsuario(usuarioServicio.obtener(calificacionDTO.getCodigoUsuario()));
     calificacion.setEstrellas(calificacionDTO.getEstrellas());
-    calificacion.setProducto(productoServicio.obtener(calificacionDTO.getCodigoProducto()));
+    calificacion.setProducto(productoRepo.obtenerProducto(calificacionDTO.getCodigoProducto()));
         return calificacionRepo.save( calificacion ).getCodigo();
-         */
-        return 0;
     }
     @Override
     public List<Calificacion> listarCalificacion(int codigoProducto) {

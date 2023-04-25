@@ -52,22 +52,31 @@ import java.util.List;
 
         Assertions.assertNotEquals(0, codeCompra);
     }
-    /*
+
     @Test
     @Sql("classpath:dataset.sql")
-    public void listTransaction() {
-        List<TransactionGetDTO> listTransaction = transactionInterface.listTransactionByPerson("1004684293");
-        System.out.println(listTransaction);
-        Assertions.assertFalse(listTransaction.isEmpty());
+    public void listarCompra() {
+        List<Compra> listarComprasUsuario = compraServicio.listarComprasUsuario(1);
+        for(Compra compra :listarComprasUsuario) {
+            System.err.println("Compra: "+compra.getValorTotal()+"   "+compra.getMedioPago());
+            for(DetalleCompra detalleCompra :compra.getDetalleCompraList()) {
+                System.err.println("DETAIL:"+detalleCompra.getCodigo()+" name: "+compra.getValorTotal()+"   "+compra.getMedioPago());
+
+            }
+        }
+        System.out.println(listarComprasUsuario);
+        Assertions.assertFalse(listarComprasUsuario.isEmpty());
     }
     @Test
     @Sql("classpath:dataset.sql")
-    public void getTransaction() throws Exception {
-        TransactionGetDTO transactionGetDTO = transactionInterface.getTransactionDTO(1);
-        Assertions.assertNotNull(transactionGetDTO);
+    public void obtenerCompra() throws Exception {
+        Compra compra = compraServicio.obtenerCompra(11);
+        System.err.println("Compra: "+compra.getValorTotal()+"   "+compra.getMedioPago());
+
+        Assertions.assertNotNull(compra);
     }
 
-     */
+
 
 
 

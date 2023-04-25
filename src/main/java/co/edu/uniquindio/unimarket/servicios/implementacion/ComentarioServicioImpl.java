@@ -7,6 +7,7 @@ import co.edu.uniquindio.unimarket.modelo.entidades.Calificacion;
 import co.edu.uniquindio.unimarket.modelo.entidades.Comentario;
 import co.edu.uniquindio.unimarket.repositorios.CalificacionRepo;
 import co.edu.uniquindio.unimarket.repositorios.ComentarioRepo;
+import co.edu.uniquindio.unimarket.repositorios.ProductoRepo;
 import co.edu.uniquindio.unimarket.repositorios.UsuarioRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.CalificacionServicio;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ComentarioServicio;
@@ -26,22 +27,18 @@ public class ComentarioServicioImpl implements ComentarioServicio {
 
     private final UsuarioServicio usuarioServicio;
 
-    //private final ProductoServicio productoServicio;
+    ProductoRepo productoRepo;
 
     @Override
     public int crearComentario(ComentarioDTO comentarioDTO) throws Exception {
 
 
     Comentario comentario = new Comentario();
-    /*
         comentario.setUsuario(usuarioServicio.obtener(comentarioDTO.getCodigoUsuario()));
         comentario.setObservacion(comentarioDTO.getObservacion());
         comentario.setFechaCreacion(LocalDateTime.now());
-        comentario.setProducto(productoServicio.obtener(comentarioDTO.getCodigoProducto()));
+        comentario.setProducto(productoRepo.obtenerProducto(comentarioDTO.getCodigoProducto()));
         return comentarioRepo.save( comentario ).getCodigo();
-
-     */
-        return 0;
     }
 
 

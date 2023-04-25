@@ -100,10 +100,10 @@ public class ProductoTest {
     @Sql("classpath:dataset.sql" )
     @Test
     public void listarProductosCategoria()throws Exception{
-        //for(ProductoGetDTO producto :productoServicio.listarProductosCategoria(Categoria.ACCESORIOS)) {
-          //  System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+producto.getCodigoVendedor()+"   ");
+        for(ProductoGetDTO producto :productoServicio.listarProductosCategoria(Categoria.ACCESORIOS)) {
+            System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+producto.getCodigoVendedor()+"   ");
 
-        //}
+        }
     }
 
     @Sql("classpath:dataset.sql" )
@@ -118,8 +118,8 @@ public class ProductoTest {
     @Sql("classpath:dataset.sql" )
     @Test
     public void listarProductosFavoritos()throws Exception{
-        for(ProductoGetDTO producto :productoServicio.listarProductosFavoritos(1)) {
-            System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+producto.getCodigoVendedor()+"   ");
+        for(Producto producto :usuarioServicio.obtener(1).getProductoFavList()) {
+            System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+"   ");
 
         }
     }

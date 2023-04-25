@@ -1,6 +1,9 @@
 import co.edu.uniquindio.unimarket.UniMarketApplication;
+import co.edu.uniquindio.unimarket.modelo.dto.ContrasenaDTO;
 import co.edu.uniquindio.unimarket.modelo.dto.UsuarioDTO;
 import co.edu.uniquindio.unimarket.modelo.dto.UsuarioGetDTO;
+import co.edu.uniquindio.unimarket.modelo.entidades.Usuario;
+import co.edu.uniquindio.unimarket.repositorios.UsuarioRepo;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
@@ -15,6 +18,8 @@ import org.springframework.test.context.jdbc.Sql;
 
     @Autowired
     private UsuarioServicio usuarioServicio;
+    @Autowired
+    private UsuarioRepo usuarioRepo;
 
     @Test
     public void crearUsuarioTest() throws Exception{
@@ -86,6 +91,49 @@ import org.springframework.test.context.jdbc.Sql;
             System.err.println("usuario: "+ usuarioGetDTO.getNombre()+ usuarioGetDTO.getEmail()+usuarioGetDTO.getDireccion()+usuarioGetDTO.getTelefono());
 
         }
+    @Test
+    @Sql("classpath:dataset.sql" )
+    public void cambiarConstrasenaAnterior() throws Exception {
+        Usuario usuarioGetDTO = usuarioRepo.obtenerUsuario2(1);
 
+        //Comprobamos que la dirección que está en la base de datos coincide con la que esperamos
+        System.err.println("usuario 1 : "+ usuarioGetDTO.getContrasena());
+
+        ContrasenaDTO contrasenaDTO = new ContrasenaDTO("aceituna","aceituna");
+
+        Usuario pastUsuario = usuarioServicio.obtener(1);
+
+        String contrasenaAnterior = pastUsuario.getContrasena();
+
+
+        usuarioServicio.cambiarConstrasenaAnterior(pastUsuario.getCodigo(),contrasenaDTO);
+
+        String nuevaContrasena = usuarioRepo.buscarUsuario("kssm102001@gmail.com").getContrasena();
+
+
+        Assertions.assertNotEquals(contrasenaAnterior,nuevaContrasena);
+
+        Usuario usuarioGetDTO2 = usuarioRepo.obtenerUsuario2(1);
+
+        //Comprobamos que la dirección que está en la base de datos coincide con la que esperamos
+        System.err.println("usuario 2 : "+ usuarioGetDTO2.getContrasena());
+
+    }
+
+    @Test
+    @Sql("classpath:dataset.sql" )
+    public void changePasswordRecuperated() throws Exception {
+
+        ContrasenaDTO contrasenaDTO = new ContrasenaDTO("1230302","1230302");
+
+        String contrasenaAnterior = usuarioRepo.buscarUsuario("pipecar366@gmail.com").getContrasena();
+
+
+        usuarioServicio.cambiarContrasenaRecuperada("pipecar366@gmail.com",contrasenaDTO);
+
+        String nuevaContrasena = usuarioRepo.buscarUsuario("pipecar366@gmail.com").getContrasena();
+
+        Assertions.assertNotEquals(contrasenaAnterior,nuevaContrasena);
+    }
     }
 
