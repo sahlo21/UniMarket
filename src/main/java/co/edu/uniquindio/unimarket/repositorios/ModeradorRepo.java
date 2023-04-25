@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ModeradorRepo extends JpaRepository<Moderador, String> {
+public interface ModeradorRepo extends JpaRepository<Moderador, Integer> {
     @Query("select m from Moderador m where m.email = :email")
     Optional<Moderador> findByEmail(String email);
     @Query("select p from Producto p join ProductoModerado pm on p.codigo = pm.producto.codigo where pm.producto.codigo = :codigoProducto")

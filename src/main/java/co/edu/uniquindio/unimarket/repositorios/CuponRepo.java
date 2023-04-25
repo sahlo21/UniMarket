@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CuponRepo extends JpaRepository<Cupon, String> {
+public interface CuponRepo extends JpaRepository<Cupon, Integer> {
     @Query("select cp from Cupon cp join UsuarioCupones uc on cp.codigo = uc.cupon.codigo where uc.usuario.codigo = :codigoUsuario")
     List<CuponGetDTO> listarCupones(int codigoUsuario);
     @Query("select c from Compra c join Usuario u on c.usuario.codigo = u.codigo join UsuarioCupones uc on u.codigo = uc.usuario.codigo where uc.cupon.codigo = :codigoCupon")

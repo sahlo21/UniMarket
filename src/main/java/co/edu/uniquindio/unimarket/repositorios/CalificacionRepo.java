@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CalificacionRepo extends JpaRepository<Calificacion, String> {
+public interface CalificacionRepo extends JpaRepository<Calificacion, Integer> {
     @Query("select cf from Calificacion cf where cf.producto.codigo = :codigoProducto")
     List<CalificacionDTO> listarCalificacion(int codigoProducto);
 

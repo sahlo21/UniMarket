@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
+
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Producto implements Serializable {
     @Id
@@ -26,8 +26,10 @@ public class Producto implements Serializable {
     @Column(nullable = false)
     private int unidades;
     @Column(nullable = false)
+    @ToString.Exclude
     private LocalDateTime fechaLimite;
     @Column(nullable = false)
+    @ToString.Exclude
     private LocalDateTime fechaCreacion;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -35,6 +37,7 @@ public class Producto implements Serializable {
     @Column(nullable = false, length = 150)
     private String descripcion;
     @Column(nullable = false)
+    @ToString.Exclude
     private float precio;
     @ElementCollection
     private List<Categoria> categoriaList;
