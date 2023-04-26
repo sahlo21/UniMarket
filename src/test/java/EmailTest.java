@@ -34,7 +34,7 @@ public class EmailTest {
 
 
 
-        EmailDTO email= new EmailDTO("hola","revise pues lo de software ome KJASKDJA" ,"mimilink07@gmail.com" );
+        EmailDTO email= new EmailDTO("hola","esta es una prueba" ,"mimilink07@gmail.com" );
 
 
         emailServicio.enviarEmail(email);

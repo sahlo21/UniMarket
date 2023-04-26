@@ -1,7 +1,7 @@
-insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (1, "aceituna", "kssm102001@gmail.com", "pepito", "Calle 11 # 2 - 33","7506789");
-insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (2, "brocoli", "juanita@gmail.com", "juanita", "Calle 12 # 1 - 63","3152089978");
+insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (1, "aceituna", "kssm102001@gmail.com", "Kevin", "Calle 11 # 2 - 33","7506789");
+insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (2, "brocoli", "mimilink07@gmail.com", "Julian", "Calle 12 # 1 - 63","3152089978");
 insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (3, "perejil", "andrea@gmail.com", "andrea", "Calle 13 # 2 - 13","3102089978");
-insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (4, "cilantro", "kevin@gmail.com", "kevin", "Calle 14 # 3 - 23","3212089978");
+insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (4, "cilantro", "kevin@gmail.com", "raul", "Calle 14 # 3 - 23","3212089978");
 insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (5, "puerro", "juancho@gmail.com", "juan", "Calle 15 # 17 - 43","3178586989");
 
 insert into producto (codigo, descripcion, estado, fecha_creacion, fecha_limite, nombre, precio, unidades, usuario_codigo) values (6, "Sirve para escribir", "SIN_REVISAR", '2023-02-28', '2023-03-28', "lapiz", 15000, 17, 1);

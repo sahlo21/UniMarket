@@ -67,7 +67,7 @@ public class ProductoTest {
         //Se espera que el servicio retorne el código del nuevo producto
         Assertions.assertNotEquals(0, codigoProducto);
 
-        System.err.println("aakjdskasj"+usuarioServicio.obtenerUsuario(codigoVendedor));
+        System.err.println("Producto"+usuarioServicio.obtenerUsuario(codigoVendedor));
 
     }
     @Sql("classpath:dataset.sql" )
@@ -198,7 +198,7 @@ public class ProductoTest {
         }
 
         productoServicio.eliminarFavorito(6, 1);
-        System.out.println("AJSHDASDJAHSJDAHS");
+
 
         for(Producto producto :usuarioServicio.obtener(1).getProductoFavList()) {
             System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+"   ");

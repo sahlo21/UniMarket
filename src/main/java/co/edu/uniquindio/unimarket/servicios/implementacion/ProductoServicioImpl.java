@@ -126,7 +126,7 @@ public class ProductoServicioImpl implements ProductoServicio {
 
         if(usuarioEncontrado != null && productoEncontrado != null) {
             usuarioEncontrado.getProductoFavList().add(productoEncontrado);
-            System.err.println("SEXOOOOOOOOOOOOOOOOOOO");
+
             usuarioRepo.save(usuarioEncontrado);
         }else{
             throw new Exception("El usuario y/o producto no existen");

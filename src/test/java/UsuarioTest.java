@@ -59,7 +59,7 @@ import org.springframework.test.context.jdbc.Sql;
         //Para actualizar el usuario primero se debe crear
 
         UsuarioGetDTO guardado = usuarioServicio.obtenerUsuario(1);
-        System.err.println("HOLAAAAAAA: "+guardado.getNombre());
+        System.err.println("User: "+guardado.getNombre());
         UsuarioDTO modificado = new UsuarioDTO(
                 guardado.getNombre(),
                 guardado.getEmail(),
