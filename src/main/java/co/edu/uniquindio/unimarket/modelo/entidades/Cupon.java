@@ -18,7 +18,7 @@ public class Cupon implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int codigo;
     @Column(nullable = false)
-    private double valor;
-    @OneToMany(mappedBy = "cupon")
-    private List<UsuarioCupones> usuarioCuponesList;
+    private float valor;
+    @ManyToOne
+    private Usuario usuario;
 }

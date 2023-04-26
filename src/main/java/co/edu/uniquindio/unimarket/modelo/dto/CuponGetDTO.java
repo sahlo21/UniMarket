@@ -13,6 +13,6 @@ public class CuponGetDTO  {
 
     private int codigo;
 
-    private double valor;
+    private float valor;
 
 }

@@ -1,4 +1,4 @@
-package co.edu.uniquindio.unimarket.controladores;
+/**package co.edu.uniquindio.unimarket.controladores;
 
 import co.edu.uniquindio.unimarket.modelo.dto.CuponDTO;
 import co.edu.uniquindio.unimarket.modelo.dto.CuponGetDTO;
@@ -26,8 +26,10 @@ public class CuponController {
     public ResponseEntity<MensajeDTO> listarCupones(@PathVariable int codigoUsuario){
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, cuponServicio.listarCupones(codigoUsuario)));
     }
-    @GetMapping("/obtenerCompra/{codigoCupon}")
-    public ResponseEntity<MensajeDTO> obtenerCompra(@PathVariable int codigoCupon){
-        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, cuponServicio.obtenerCompra(codigoCupon)));
+    @GetMapping("/obtenerCupon/{codigoCupon}")
+    public ResponseEntity<MensajeDTO> obtenerCupon(@PathVariable int codigoCupon){
+        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, cuponServicio.obtenerCupon(codigoCupon)));
     }
 }
+
+ */

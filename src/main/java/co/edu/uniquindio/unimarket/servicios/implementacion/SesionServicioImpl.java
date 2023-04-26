@@ -17,16 +17,16 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class SesionServicioImpl implements ServicioSesion {
     @Autowired
-    private final JwtService jwtService;
-    @Autowired
     private final AuthenticationManager authenticationManager;
+    @Autowired
+    private final JwtService jwtService;
+
     @Override
     public TokenDTO login(SesionDTO sesionDTO) {
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         sesionDTO.getEmail(),
                         sesionDTO.getPassword())
-
         );
         UserDetails user = (UserDetailsImpl) authentication.getPrincipal();
         String jwtToken = jwtService.generateToken(user);

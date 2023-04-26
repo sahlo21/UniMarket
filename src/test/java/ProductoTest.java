@@ -2,6 +2,7 @@ import co.edu.uniquindio.unimarket.UniMarketApplication;
 import co.edu.uniquindio.unimarket.modelo.dto.ProductoDTO;
 import co.edu.uniquindio.unimarket.modelo.dto.ProductoGetDTO;
 import co.edu.uniquindio.unimarket.modelo.dto.UsuarioDTO;
+import co.edu.uniquindio.unimarket.modelo.dto.UsuarioGetDTO;
 import co.edu.uniquindio.unimarket.modelo.entidades.*;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
@@ -92,10 +93,42 @@ public class ProductoTest {
     }
     @Sql("classpath:dataset.sql" )
     @Test
-    public void actualizarProducto()throws Exception{}
+    public void actualizarProducto()throws Exception{
+        ProductoGetDTO guardado = productoServicio.obtenerProducto(7);
+
+        ProductoDTO modificado = new ProductoDTO(
+                guardado.getCodigoVendedor(),
+                guardado.getEstado(),
+                10,
+                guardado.getNombre(),
+                guardado.getDescripcion(),
+                80000,
+                guardado.getImagenes(),
+                guardado.getCategorias());
+//
+
+        //El servicio de actualizar nos retorna el usuario
+
+
+        //El servicio de actualizar nos retorna el usuario
+        int codeUpdate= productoServicio.actualizarProducto(guardado.getCodigo(), modificado);
+        ProductoGetDTO productoGetDTO=productoServicio.obtenerProducto(codeUpdate);
+
+        System.err.println("Producto"+productoGetDTO.getNombre()+
+                productoGetDTO.getPrecio()+productoGetDTO.getUnidades());
+
+        //Se comprueba que ahora el teléfono del usuario no es el que se usó cuando se creó inicialmente
+        Assertions.assertNotEquals("2782", productoGetDTO.getPrecio());
+    }
     @Sql("classpath:dataset.sql" )
     @Test
-    public void eliminarProducto()throws Exception{}
+    public void eliminarProducto()throws Exception{
+        //Una vez creado, lo borramos
+        int codigoBorrado = productoServicio.eliminarProducto(7);
+
+        //Si intentamos buscar un usuario con el codigo del usuario borrado debemos obtener una excepción indicando que ya no existe
+        Assertions.assertThrows(Exception.class, () -> productoServicio.obtener(codigoBorrado));
+    }
 
     @Sql("classpath:dataset.sql" )
     @Test

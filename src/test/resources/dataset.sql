@@ -72,11 +72,6 @@ insert into producto_moderado_estados (producto_moderado_codigo, estados) values
 insert into producto_moderado_estados (producto_moderado_codigo, estados) values (54, 2);
 insert into producto_moderado_estados (producto_moderado_codigo, estados) values (55, 3);
 
-insert into usuario_cupones (id_favorito_producto, cupon_codigo, usuario_codigo) values (56, 31, 1);
-insert into usuario_cupones (id_favorito_producto, cupon_codigo, usuario_codigo) values (57, 32, 3);
-insert into usuario_cupones (id_favorito_producto, cupon_codigo, usuario_codigo) values (58, 33, 5);
-insert into usuario_cupones (id_favorito_producto, cupon_codigo, usuario_codigo) values (59, 34, 4);
-insert into usuario_cupones (id_favorito_producto, cupon_codigo, usuario_codigo) values (60, 35, 2);
 
 insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 1, 6);
 insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 1, 7);

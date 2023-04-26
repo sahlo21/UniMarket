@@ -13,5 +13,9 @@ public interface CuponServicio {
 
     List<CuponGetDTO> listarCupones(int codigoUsuario);
 
-    CuponGetDTO obtenerCompra(int codigoCupon);
+    CuponGetDTO obtenerCupon(int codigoCupon);
+
+    CuponGetDTO redimirCupon(int codigoCupon, int codigoCompra);
+
+    void  asignarCupon(int codigoCupon, int codigoUsuario);
 }
