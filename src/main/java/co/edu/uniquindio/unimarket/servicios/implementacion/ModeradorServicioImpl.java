@@ -33,15 +33,12 @@ public class ModeradorServicioImpl implements ModeradorServicio {
         List<ProductoGetDTO> lista = productoServicio.listarProductosEstado(estado);
         return lista;
     }
-
     @Override
     public void revisarProducto(int codigoProducto) throws Exception {
 
         Producto producto = moderadorRepo.revisarProducto(codigoProducto);
 
         System.out.println("Producto: "+producto.getNombre()+"Precio"+producto.getPrecio());
-
-
     }
 
     @Override

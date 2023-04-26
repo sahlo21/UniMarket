@@ -23,9 +23,25 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.cors();
-        http.authorizeHttpRequests()
-                .requestMatchers("/api/auth/**").permitAll()
-                .anyRequest().authenticated();
+        http.authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll();
+        http.authorizeHttpRequests().requestMatchers("/api/usuario/crear/**",
+                "/api/usuario/actualizar/**",
+                "/api/usuario/eliminar/**",
+                "/api/usuario/obtener/**",
+                "/api/usuario/cambiarContraseniaAnterior/**",
+                "/api/usuario/cambiarContrasenaRecuperada/**",
+                "/api/usuario/recuperarContrasena/**"
+                ).permitAll();
+        http.authorizeHttpRequests().requestMatchers("api/moderador/**").hasAuthority("MODERADOR");
+        http.authorizeHttpRequests().requestMatchers("api/moderador/**").hasAuthority("MODERADOR");
+        http.authorizeHttpRequests().requestMatchers(
+                "/api/producto/crear/**",
+                "/api/producto/actualizarProducto/**",
+                "/api/producto/eliminarProducto/**",
+                "/api/producto/obtener/**",
+                "/api/producto/listarProductosUsuario/**",
+                ""
+        ).permitAll().anyRequest().authenticated();
         http.exceptionHandling().authenticationEntryPoint(jwtEntryPoint);
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authenticationProvider(authenticationProvider);
