@@ -37,24 +37,24 @@ public class CuponServicioImpl implements CuponServicio {
     }
 
     @Override
-    public List<CuponGetDTO> listarCupones(int codigoUsuario) {
+    public List<Cupon> listarCupones(int codigoUsuario) {
 
-        List<CuponGetDTO> lista = cuponRepo.listarCupones(codigoUsuario);
+        List<Cupon> lista = usuarioRepo.obtenerUsuario2(codigoUsuario).getCuponList();
 
         return lista;
     }
 
     @Override
-    public CuponGetDTO obtenerCupon(int codigoCupon) {
+    public Cupon obtenerCupon(int codigoCupon) {
 
-        CuponGetDTO cupon= cuponRepo.obtenerCupon(codigoCupon);
+        Cupon cupon= cuponRepo.obtenerCupon(codigoCupon);
         return cupon;
 
     }
     @Override
-    public CuponGetDTO redimirCupon(int codigoCupon, int codigoCompra) {
+    public Cupon redimirCupon(int codigoCupon, int codigoCompra) {
 
-        CuponGetDTO cupon= cuponRepo.obtenerCupon(codigoCupon);
+        Cupon cupon= cuponRepo.obtenerCupon(codigoCupon);
         Compra compra= compraRepo.obtenerCompra2(codigoCompra);
 
         compra.setValorTotal(compra.getValorTotal()-cupon.getValor());
@@ -65,7 +65,7 @@ public class CuponServicioImpl implements CuponServicio {
     @Override
     public void  asignarCupon(int codigoCupon, int codigoUsuario) {
 
-        Cupon cupon= cuponRepo.obtenerCupon2(codigoCupon);
+        Cupon cupon= cuponRepo.obtenerCupon(codigoCupon);
 
         Usuario usuario= usuarioRepo.obtenerUsuario2(codigoUsuario);
 

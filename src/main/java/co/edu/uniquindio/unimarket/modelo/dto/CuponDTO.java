@@ -6,8 +6,7 @@ import lombok.*;
 @Setter
 public class CuponDTO  {
 
-    private int codigoUsuario;
-
     private float valor;
+    private int codigoUsuario;
 
 }

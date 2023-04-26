@@ -34,13 +34,11 @@ insert into comentario (codigo, fecha_creacion, observacion, producto_codigo, us
 insert into comentario (codigo, fecha_creacion, observacion, producto_codigo, usuario_codigo) values (29, '2023-03-15', "No vale la pena", 9, 3);
 insert into comentario (codigo, fecha_creacion, observacion, producto_codigo, usuario_codigo) values (30, '2023-03-17', "Esta meh", 10, 1);
 
-insert into cupon (codigo, valor) values (31, 2000);
-insert into cupon (codigo, valor) values (32, 15000);
-insert into cupon (codigo, valor) values (33, 25000);
-insert into cupon (codigo, valor) values (34, 5000);
-insert into cupon (codigo, valor) values (35, 24999);
-
-
+insert into cupon (codigo, valor, usuario_codigo) values (31, 2000, 1);
+insert into cupon (codigo, valor, usuario_codigo) values (32, 15000, 1);
+insert into cupon (codigo, valor, usuario_codigo) values (33, 25000, 1);
+insert into cupon (codigo, valor, usuario_codigo) values (34, 5000, 5);
+insert into cupon (codigo, valor, usuario_codigo) values (35, 24999, 3);
 
 insert into imagen (id_imagen, ruta, producto_codigo) values (41, "C:\imagen\lapiz.jpg", 6);
 insert into imagen (id_imagen, ruta, producto_codigo) values (42, "C:\imagen\ladrillo.jpg", 7);
@@ -71,7 +69,6 @@ insert into producto_moderado_estados (producto_moderado_codigo, estados) values
 insert into producto_moderado_estados (producto_moderado_codigo, estados) values (53, 5);
 insert into producto_moderado_estados (producto_moderado_codigo, estados) values (54, 2);
 insert into producto_moderado_estados (producto_moderado_codigo, estados) values (55, 3);
-
 
 insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 1, 6);
 insert into usuario_producto_fav_list (usuario_fav_list_codigo, producto_fav_list_codigo) values ( 1, 7);
