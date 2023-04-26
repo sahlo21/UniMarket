@@ -44,7 +44,7 @@ import org.springframework.test.context.jdbc.Sql;
         public void eliminarUsuarioTest() throws Exception{
 
             //Una vez creado, lo borramos
-            int codigoBorrado = usuarioServicio.eliminarUsuario(1);
+            int codigoBorrado = usuarioServicio.eliminarUsuario(4);
 
             //Si intentamos buscar un usuario con el codigo del usuario borrado debemos obtener una excepción indicando que ya no existe
             Assertions.assertThrows(Exception.class, () -> usuarioServicio.obtenerUsuario(codigoBorrado));

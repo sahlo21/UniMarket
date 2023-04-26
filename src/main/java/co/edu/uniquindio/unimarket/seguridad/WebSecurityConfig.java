@@ -23,6 +23,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.cors();
+        http.authorizeHttpRequests().anyRequest().permitAll();
         http.authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll();
         http.authorizeHttpRequests().requestMatchers("/api/usuario/crear/**",
                 "/api/usuario/actualizar/**",
@@ -64,10 +65,10 @@ public class WebSecurityConfig {
                 "api/producto/listarProductosNombre/**",
                 "api/producto/guardarFavorito/**",
                 "api/producto/eliminarFavorito/**"
-                ).permitAll();
+                ).hasAuthority("CLIENTE");
         http.authorizeHttpRequests().requestMatchers("api/imagines/upload/**",
                 "api/producto/eliminar/**"
-                ).hasAuthority("CLIENTE");
+                ).permitAll();
         http.authorizeHttpRequests().requestMatchers("api/moderador/listarProducto/**",
                 "api/moderador/revisarProducto/**"
                 ).hasAuthority("MODERADOR");

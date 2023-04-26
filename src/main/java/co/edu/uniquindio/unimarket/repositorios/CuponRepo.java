@@ -11,11 +11,11 @@ import java.util.List;
 
 @Repository
 public interface CuponRepo extends JpaRepository<Cupon, Integer> {
-    @Query("select cp from Cupon cp join UsuarioCupones uc on cp.codigo = uc.cupon.codigo where uc.usuario.codigo = :codigoUsuario")
+    @Query("select c from Cupon c where c.usuario.codigo = :codigoUsuario")
     List<CuponGetDTO> listarCupones(int codigoUsuario);
-    @Query("select c from Compra c join Usuario u on c.usuario.codigo = u.codigo join UsuarioCupones uc on u.codigo = uc.usuario.codigo where uc.cupon.codigo = :codigoCupon")
+    @Query("select c from Cupon c join Usuario u on c.usuario.codigo = u.codigo join Compra cm on u.codigo = cm.usuario.codigo where c.codigo = :codigoCupon")
     CuponGetDTO obtenerCupon(int codigoCupon);
-    //@Query("select c from Compra c join Usuario u on c.usuario.codigo = u.codigo join UsuarioCupones uc on u.codigo = uc.usuario.codigo where uc.cupon.codigo = :codigoCupon")
+    @Query("select c from Cupon c join Usuario u on c.usuario.codigo = u.codigo join Compra cm on u.codigo = cm.usuario.codigo where c.codigo = :codigoCupon")
     Cupon obtenerCupon2(int codigoCupon);
 
 }

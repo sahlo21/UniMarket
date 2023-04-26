@@ -46,8 +46,8 @@ public class UsuarioController {
         usuarioServicio.cambiarContrasenaRecuperada(emailPerson,contrasenaDTO);
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, "Contrasenia cambiada correctamente"));
     }
-    @PostMapping("/recuperarContrasena")
-    public ResponseEntity<MensajeDTO> recuperarContrasena(@Valid @RequestBody UsuarioEmailDTO usuarioEmailDTO) throws Exception{
+    @PostMapping("/recuperarContrasena/{usuarioEmailDTO}")
+    public ResponseEntity<MensajeDTO> recuperarContrasena(@PathVariable UsuarioEmailDTO usuarioEmailDTO) throws Exception{
         usuarioServicio.recuperarContrasena(usuarioEmailDTO);
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, "Correo enviado correctamente"));
     }
