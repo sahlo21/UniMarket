@@ -24,54 +24,6 @@ public class WebSecurityConfig {
         http.csrf().disable();
         http.cors();
         http.authorizeHttpRequests().anyRequest().permitAll();
-        http.authorizeHttpRequests().requestMatchers("/api/auth/**").permitAll();
-        http.authorizeHttpRequests().requestMatchers("/api/usuario/crear/**",
-                "/api/usuario/actualizar/**",
-                "/api/usuario/eliminar/**",
-                "/api/usuario/obtener/**",
-                "/api/usuario/cambiarContraseniaAnterior/**",
-                "/api/usuario/cambiarContrasenaRecuperada/**",
-                "/api/usuario/recuperarContrasena/**"
-                ).permitAll();
-        http.authorizeHttpRequests().requestMatchers("/api/detalleCompra/crear/**",
-                "/api/detalleCompra/actualizarUnidades/**",
-                "/api/detalleCompra/listarDetalleCompra/**",
-                "/api/detalleCompra/obtener/**"
-                ).permitAll();
-        http.authorizeHttpRequests().requestMatchers("/api/cupon/crear/**",
-                "/api/cupon/listarCupones/**",
-                "/api/cupon/obtenerCompra/**"
-                ).permitAll();
-        http.authorizeHttpRequests().requestMatchers("/api/compra/crear/**",
-                "/api/compra/listarComprasUsuario/**",
-                "/api/compra/obtenerCompra/**"
-                ).permitAll();
-        http.authorizeHttpRequests().requestMatchers("/api/comentario/crear/**",
-                "/api/comentario/listar/**"
-                ).permitAll();
-        http.authorizeHttpRequests().requestMatchers("/api/calificacion/crear/**",
-                "/api/calificacion/listarCalificacion/**",
-                "/api/calificacion/promediarCalificaciones/**"
-                ).permitAll();
-        http.authorizeHttpRequests().requestMatchers("api/producto/crear/**",
-                "api/producto/actualizar/**",
-                "api/producto/eliminar/**",
-                "api/producto/obtener/**",
-                "api/producto/listarProductoUsuario/**",
-                "api/producto/listarProductosCategoria/**",
-                "api/producto/listarProductosEstado/**",
-                "api/producto/listarProductosFavoritos/**",
-                "api/producto/listarProductosPrecio/**",
-                "api/producto/listarProductosNombre/**",
-                "api/producto/guardarFavorito/**",
-                "api/producto/eliminarFavorito/**"
-                ).hasAuthority("CLIENTE");
-        http.authorizeHttpRequests().requestMatchers("api/imagines/upload/**",
-                "api/producto/eliminar/**"
-                ).permitAll();
-        http.authorizeHttpRequests().requestMatchers("api/moderador/listarProducto/**",
-                "api/moderador/revisarProducto/**"
-                ).hasAuthority("MODERADOR");
         http.exceptionHandling().authenticationEntryPoint(jwtEntryPoint);
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authenticationProvider(authenticationProvider);
