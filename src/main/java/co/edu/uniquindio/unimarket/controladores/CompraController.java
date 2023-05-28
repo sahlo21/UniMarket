@@ -30,4 +30,8 @@ public class CompraController {
     public ResponseEntity<MensajeDTO> obtenerCompra(@PathVariable int codigoCompra){
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, compraServicio.obtenerCompra(codigoCompra)));
     }
+  //  @GetMapping("/listarMedioPago")
+   // public ResponseEntity<MensajeDTO> listarMedioPago(){
+   //     return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, compraServicio.listarMedioPago()));
+  //  }
 }

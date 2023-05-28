@@ -148,6 +148,7 @@ public class ProductoServicioImpl implements ProductoServicio {
 
 
 
+
     private ProductoGetDTO convertir(Producto producto){
 
         ProductoGetDTO productoGetDTO = new ProductoGetDTO(
@@ -191,7 +192,10 @@ public class ProductoServicioImpl implements ProductoServicio {
 
         return respuesta;
     }
-
+    @Override
+    public List<Categoria> listarCategorias() {
+        return  productoRepo.listarCategorias();
+    }
     @Override
     public List<ProductoGetDTO> listarProductosNombre(String nombre) {
 

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class ProductoController {
     private final ProductoServicio productoServicio;
+
     @PostMapping("/crear")
     public ResponseEntity<MensajeDTO> crearProducto(@Valid @RequestBody ProductoDTO productoDTO) throws Exception{
         productoServicio.crearProducto(productoDTO);
@@ -48,6 +49,13 @@ public class ProductoController {
     public ResponseEntity<MensajeDTO> listarProductosEstado(@PathVariable Estado estado){
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.listarProductosEstado(estado)));
     }
+
+    @GetMapping("/listarProductos")
+    public ResponseEntity<MensajeDTO> listarProductos(){
+            Estado estado= Estado.AUTORIZADOS;
+
+        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.listarProductosEstado(estado)));
+    }
     @GetMapping("/listarProductosFavoritos/{codigoUsuario}")
     public ResponseEntity<MensajeDTO> listarProductosFavoritos(@PathVariable int codigoUsuario){
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.listarProductosFavoritos(codigoUsuario)));
@@ -70,4 +78,10 @@ public class ProductoController {
         productoServicio.eliminarFavorito(codigoProducto, codigoUsuario);
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, "Producto eliminado de favoritos"));
     }
+    @GetMapping("/listarCategorias")
+    public ResponseEntity<MensajeDTO> listarCategorias(){
+        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.listarCategorias()));
+    }
+
+
 }

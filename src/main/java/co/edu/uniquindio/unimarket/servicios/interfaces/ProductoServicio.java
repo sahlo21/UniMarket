@@ -22,4 +22,6 @@ public interface ProductoServicio {
     List<ProductoGetDTO> listarProductosNombre(String nombre);
     void guardarFavorito(int codigoProducto, int codigoUsuario) throws Exception;
      void eliminarFavorito(int codigoProducto, int codigoUsuario) throws Exception;
+
+    List<Categoria> listarCategorias();
 }

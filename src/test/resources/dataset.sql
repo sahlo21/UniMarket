@@ -4,7 +4,7 @@ insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) val
 insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (4, "cilantro", "kevin@gmail.com", "raul", "Calle 14 # 3 - 23","3212089978");
 insert into usuario (codigo, contrasena, email, nombre, direccion, telefono) values (5, "puerro", "juancho@gmail.com", "juan", "Calle 15 # 17 - 43","3178586989");
 
-insert into producto (codigo, descripcion, estado, fecha_creacion, fecha_limite, nombre, precio, unidades, usuario_codigo) values (6, "Sirve para escribir", "SIN_REVISAR", '2023-02-28', '2023-03-28', "lapiz", 15000, 17, 1);
+insert into producto ( descripcion, estado, fecha_creacion, fecha_limite, nombre, precio, unidades, usuario_codigo) values ("Sirve para escribir", "SIN_REVISAR", '2023-02-28', '2023-03-28', "lapiz", 15000, 17, 1);
 insert into producto (codigo, descripcion, estado, fecha_creacion, fecha_limite, nombre, precio, unidades, usuario_codigo) values (7, "Se utiliza en la construccion", "AUTORIZADOS", '2023-02-25', '2023-03-25', "ladrillos", 1700, 10, 2);
 insert into producto (codigo, descripcion, estado, fecha_creacion, fecha_limite, nombre, precio, unidades, usuario_codigo) values (8, "Utiles para el mal aliento", "SIN_REVISAR", '2023-02-23', '2023-03-23', "mentas", 100, 100, 3);
 insert into producto (codigo, descripcion, estado, fecha_creacion, fecha_limite, nombre, precio, unidades, usuario_codigo) values (9, "Para mejorar bebidas", "NO_AUTORIZADOS", '2023-02-10', '2023-03-10', "azucar", 17000, 30, 4);
