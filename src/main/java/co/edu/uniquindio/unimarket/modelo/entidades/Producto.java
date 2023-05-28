@@ -40,13 +40,15 @@ public class Producto implements Serializable {
     @Column(nullable = false)
     @ToString.Exclude
     private float precio;
+    @Enumerated(EnumType.STRING)
     @ElementCollection
-    private List<String> categoriaList;
+    private List<Categoria> categoriasList;
     @OneToMany(mappedBy="producto")
     private List<Comentario> comentarioList;
     @ElementCollection
     @NotNull
     private List<String> imagenList;
+
     @OneToMany(mappedBy="producto")
     private List<Calificacion> calificacionList;
 

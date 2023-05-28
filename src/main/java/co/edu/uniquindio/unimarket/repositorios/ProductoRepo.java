@@ -20,8 +20,8 @@ public interface ProductoRepo extends JpaRepository<Producto, Integer> {
     List<Producto> listarProductosNombre(String nombre);
     @Query("select p from Producto p where p.codigo = :codigoProducto")
     Producto obtenerProducto(int codigoProducto);
-    @Query("select p from Producto p where :categoria member of p.categoriaList")
-    List<Producto> listarProductosCategoria(Categoria categoria);
+    //@Query("select p from Producto p where :categoria member of p.categoriaList")
+   // List<Producto> listarProductosCategoria(Categoria categoria);
     @Query("select p from Producto p where p.estado = :estado")
     List<Producto> listarProductosEstado(Estado estado);
     //@Query("select p from Producto p where :codigoUsuario member of p.usuarioFavList")
@@ -29,6 +29,6 @@ public interface ProductoRepo extends JpaRepository<Producto, Integer> {
     @Query("select p from Producto p where p.precio >= :precioMinimo AND p.precio <= :precioMaximo")
     List<Producto> listarProductosPrecio(float precioMinimo, float precioMaximo);
 
-    @Query("select p.categoriaList from Producto p where p.codigo = 1597531")
-    List<Categoria> listarCategorias();
+    ///@Query("select p.categoriaList from Producto p where p.codigo = 1597531")
+    //List<Categoria> listarCategorias();
 }

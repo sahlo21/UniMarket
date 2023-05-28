@@ -37,10 +37,10 @@ public class ProductoServicioImpl implements ProductoServicio {
         producto.setPrecio( productoDTO.getPrecio() );
         producto.setImagenList( productoDTO.getImagenes() );
         producto.setUsuario( usuarioServicio.obtener( productoDTO.getCodigoVendedor() ));
-        producto.setCategoriaList( productoDTO.getCategorias() );
+        producto.setCategoriasList( productoDTO.getCategorias() );
         producto.setFechaCreacion( LocalDateTime.now() );
         producto.setFechaLimite( LocalDateTime.now().plusDays(60) );
-        producto.setEstado(Estado.SIN_REVISAR);
+        producto.setEstado(Estado.AUTORIZADOS);
 
         return productoRepo.save( producto ).getCodigo();
     }
@@ -53,7 +53,7 @@ public class ProductoServicioImpl implements ProductoServicio {
         producto.setPrecio( productoDTO.getPrecio() );
         producto.setImagenList( productoDTO.getImagenes() );
         producto.setUsuario( usuarioServicio.obtener( productoDTO.getCodigoVendedor() ));
-        producto.setCategoriaList( productoDTO.getCategorias() );
+        producto.setCategoriasList( productoDTO.getCategorias() );
         producto.setFechaCreacion( LocalDateTime.now() );
         producto.setFechaLimite( LocalDateTime.now().plusDays(60) );
         producto.setEstado(Estado.SIN_REVISAR);
@@ -120,6 +120,11 @@ public class ProductoServicioImpl implements ProductoServicio {
     }
 
     @Override
+    public List<ProductoGetDTO> listarProductosCategoria(Categoria categoria) {
+        return null;
+    }
+
+    @Override
     public void guardarFavorito(int codigoProducto, int codigoUsuario) throws Exception {
         Usuario usuarioEncontrado=usuarioServicio.obtener(codigoUsuario);
         Producto productoEncontrado= productoRepo.obtenerProducto(codigoProducto);
@@ -146,7 +151,10 @@ public class ProductoServicioImpl implements ProductoServicio {
         }
     }
 
-
+    @Override
+    public List<Categoria> listarCategorias() {
+        return null;
+    }
 
 
     private ProductoGetDTO convertir(Producto producto){
@@ -161,7 +169,7 @@ public class ProductoServicioImpl implements ProductoServicio {
                 producto.getPrecio(),
                 producto.getUsuario().getCodigo(),
                 producto.getImagenList(),
-                producto.getCategoriaList()
+                producto.getCategoriasList()
 
 
         );
@@ -169,17 +177,17 @@ public class ProductoServicioImpl implements ProductoServicio {
         return productoGetDTO;
 
     }
-    @Override
-    public List<ProductoGetDTO> listarProductosCategoria(Categoria categoria) {
-        List<Producto> lista = productoRepo.listarProductosCategoria(categoria);
-        List<ProductoGetDTO> respuesta = new ArrayList<>();
+  //  @Override
+  //  public List<ProductoGetDTO> listarProductosCategoria(Categoria categoria) {
+       // List<Producto> lista = productoRepo.listarProductosCategoria(categoria);
+       // List<ProductoGetDTO> respuesta = new ArrayList<>();
 
-        for(Producto p : lista){
-            respuesta.add( convertir(p) );
-        }
+        //for(Producto p : lista){
+        //    respuesta.add( convertir(p) );
+        //}
 
-        return respuesta;
-    }
+       // return respuesta;
+   // }
 
     @Override
     public List<ProductoGetDTO> listarProductosFavoritos(int codigoUsuario) {
@@ -192,10 +200,10 @@ public class ProductoServicioImpl implements ProductoServicio {
 
         return respuesta;
     }
-    @Override
-    public List<Categoria> listarCategorias() {
-        return  productoRepo.listarCategorias();
-    }
+    //@Override
+    //public List<Categoria> listarCategorias() {
+      //  return  productoRepo.listarCategorias();
+   // }
     @Override
     public List<ProductoGetDTO> listarProductosNombre(String nombre) {
 

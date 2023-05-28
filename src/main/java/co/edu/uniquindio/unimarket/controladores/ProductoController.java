@@ -24,7 +24,7 @@ public class ProductoController {
     @PostMapping("/crear")
     public ResponseEntity<MensajeDTO> crearProducto(@RequestBody ProductoDTO productoDTO) throws Exception{
 
-        System.err.println("aASDAKJHSKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
+        System.err.println("aASDAKJHSKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"+productoDTO );
         productoServicio.crearProducto(productoDTO);
         System.err.println("2222222222222222222222222222222222222222222222K");
         productoDTO.setImagenes(imagenesController.url);

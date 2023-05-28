@@ -1,7 +1,6 @@
 package co.edu.uniquindio.unimarket.modelo.dto;
 
 import co.edu.uniquindio.unimarket.modelo.entidades.Categoria;
-import co.edu.uniquindio.unimarket.modelo.entidades.Estado;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -41,5 +40,5 @@ import java.util.List;
         private List<String> imagenes;
 
         @NotNull
-        private List<String> categorias;
+        private List<Categoria> categorias;
     }
