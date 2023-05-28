@@ -5,6 +5,7 @@ import co.edu.uniquindio.unimarket.modelo.dto.ProductoDTO;
 import co.edu.uniquindio.unimarket.modelo.dto.ProductoGetDTO;
 import co.edu.uniquindio.unimarket.modelo.entidades.Categoria;
 import co.edu.uniquindio.unimarket.modelo.entidades.Estado;
+import co.edu.uniquindio.unimarket.modelo.entidades.MedioPago;
 import co.edu.uniquindio.unimarket.modelo.entidades.Producto;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
 import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
@@ -24,9 +25,8 @@ public class ProductoController {
     @PostMapping("/crear")
     public ResponseEntity<MensajeDTO> crearProducto(@RequestBody ProductoDTO productoDTO) throws Exception{
 
-        System.err.println("aASDAKJHSKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"+productoDTO );
         productoServicio.crearProducto(productoDTO);
-        System.err.println("2222222222222222222222222222222222222222222222K");
+
         productoDTO.setImagenes(imagenesController.url);
         return ResponseEntity.status(HttpStatus.CREATED).body( new MensajeDTO(HttpStatus.CREATED, false,
                 "el producto "+productoDTO.getNombre()+" se creo exitosamente") );
@@ -96,6 +96,10 @@ public class ProductoController {
     @GetMapping("/categorias")
     public ResponseEntity<Categoria[]> getCategorias() {
         return ResponseEntity.status(HttpStatus.OK).body( Categoria.values());
+    }
+    @GetMapping("/mediopago")
+    public ResponseEntity<MedioPago[]> getMedioPago() {
+        return ResponseEntity.status(HttpStatus.OK).body( MedioPago.values());
     }
     @GetMapping("cedula/{emailUsuario}")
     public ResponseEntity<MensajeDTO> cedulaUsuario(@PathVariable String emailUsuario) throws Exception{

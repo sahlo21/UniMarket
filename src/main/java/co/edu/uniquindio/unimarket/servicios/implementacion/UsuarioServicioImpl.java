@@ -90,7 +90,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
     @Override
     public void recuperarContrasena(String usuarioEmailDTO) throws Exception {
-        emailServicio.enviarEmail(new EmailDTO("Recuperar contraseña","Para recuperar su contraseña ingrese al siguiente enlace: https://www.unimarket.com/api/personas/recuperar_contraseña/" + usuarioEmailDTO,usuarioEmailDTO));
+        emailServicio.enviarEmail(new EmailDTO("Recuperar contraseña","Para recuperar su contraseña ingrese al siguiente enlace: http://localhost:8083/api/usuario/recuperarContrasena/" + usuarioEmailDTO,usuarioEmailDTO));
 
 
     }
