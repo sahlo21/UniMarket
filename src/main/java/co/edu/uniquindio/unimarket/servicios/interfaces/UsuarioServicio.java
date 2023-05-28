@@ -22,5 +22,6 @@ public interface UsuarioServicio {
     int cambiarConstrasenaAnterior(int idPerson, ContrasenaDTO passwordDTO) throws Exception;
 
     void recuperarContrasena(String usuarioEmailDTO) throws Exception;
+    int cedulaUsuario(String cedulaUsuario)throws Exception;
 
 }

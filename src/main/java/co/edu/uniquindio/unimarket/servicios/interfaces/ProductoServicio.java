@@ -14,7 +14,7 @@ public interface ProductoServicio {
     int eliminarProducto(int codigoProducto) throws Exception;
     ProductoGetDTO obtenerProducto(int codigoProducto) throws Exception;
     Producto obtener(int codigoProducto) throws Exception;
-    List<ProductoGetDTO> listarProductosUsuario(int codigoUsuario);
+    List<ProductoGetDTO> listarProductosUsuario(String codigoUsuario);
     List<ProductoGetDTO> listarProductosCategoria(Categoria categoria);
     List<ProductoGetDTO> listarProductosEstado(Estado estado);
     List<ProductoGetDTO> listarProductosFavoritos(int codigoUsuario);

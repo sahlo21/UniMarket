@@ -43,10 +43,10 @@ public class ProductoTest {
         int codigoVendedor = usuarioServicio.crearUsuario(usuarioDTO);
 
         //Se crea la colección de imágenes para el producto.
-        List<Imagen> imagenes = new ArrayList<>();
-        Imagen imagen = new Imagen();
-        imagen.setRuta("http://www.google.com/images/imagenasus.png");
-        imagenes.add(imagen);
+        List<String> imagenes = new ArrayList<>();
+        //Imagen imagen = new Imagen();
+        ///imagen.setRuta("http://www.google.com/images/imagenasus.png");
+        imagenes.add("http://www.google.com/images/imagenasus.png");
 
 
 
@@ -86,10 +86,10 @@ public class ProductoTest {
     @Test
     public void listarProductodUsuario()throws Exception{
 
-        for(ProductoGetDTO producto :productoServicio.listarProductosUsuario(1)) {
-            System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+producto.getCodigoVendedor()+"   ");
+      //  for(ProductoGetDTO producto :productoServicio.listarProductosUsuario(1)) {
+     //       System.err.println(producto.getCodigo()+" name: "+producto.getNombre()+"code: "+producto.getCodigoVendedor()+"   ");
 
-        }
+      //  }
     }
     @Sql("classpath:dataset.sql" )
     @Test

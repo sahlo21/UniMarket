@@ -1,6 +1,7 @@
 package co.edu.uniquindio.unimarket.modelo.entidades;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.io.Serializable;
@@ -40,11 +41,12 @@ public class Producto implements Serializable {
     @ToString.Exclude
     private float precio;
     @ElementCollection
-    private List<Categoria> categoriaList;
+    private List<String> categoriaList;
     @OneToMany(mappedBy="producto")
     private List<Comentario> comentarioList;
-    @OneToMany(mappedBy="producto")
-    private List<Imagen> imagenList;
+    @ElementCollection
+    @NotNull
+    private List<String> imagenList;
     @OneToMany(mappedBy="producto")
     private List<Calificacion> calificacionList;
 

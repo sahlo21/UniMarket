@@ -51,4 +51,9 @@ public class UsuarioController {
         usuarioServicio.recuperarContrasena(usuarioEmailDTO);
         return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false,"Correo de recuperacion de contraseña enviado con exito"));
     }
+    @GetMapping("cedula/{emailUsuario}")
+    public ResponseEntity<MensajeDTO> cedulaUsuario(@PathVariable String emailUsuario) throws Exception{
+        return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false, usuarioServicio.cedulaUsuario(emailUsuario)));
+    }
+
 }

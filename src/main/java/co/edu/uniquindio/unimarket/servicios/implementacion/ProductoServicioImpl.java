@@ -108,7 +108,7 @@ public class ProductoServicioImpl implements ProductoServicio {
     }
 
     @Override
-    public List<ProductoGetDTO> listarProductosUsuario(int codigoUsuario) {
+    public List<ProductoGetDTO> listarProductosUsuario(String codigoUsuario) {
 
        List<Producto> lista = productoRepo.listarProductosUsuario(codigoUsuario);
         List<ProductoGetDTO> respuesta = new ArrayList<>();

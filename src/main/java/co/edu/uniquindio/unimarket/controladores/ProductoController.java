@@ -7,6 +7,7 @@ import co.edu.uniquindio.unimarket.modelo.entidades.Categoria;
 import co.edu.uniquindio.unimarket.modelo.entidades.Estado;
 import co.edu.uniquindio.unimarket.modelo.entidades.Producto;
 import co.edu.uniquindio.unimarket.servicios.interfaces.ProductoServicio;
+import co.edu.uniquindio.unimarket.servicios.interfaces.UsuarioServicio;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,11 +19,17 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class ProductoController {
     private final ProductoServicio productoServicio;
-
+    private final UsuarioServicio usuarioServicio;
+    private final ImagenesController imagenesController;
     @PostMapping("/crear")
-    public ResponseEntity<MensajeDTO> crearProducto(@Valid @RequestBody ProductoDTO productoDTO) throws Exception{
+    public ResponseEntity<MensajeDTO> crearProducto(@RequestBody ProductoDTO productoDTO) throws Exception{
+
+        System.err.println("aASDAKJHSKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
         productoServicio.crearProducto(productoDTO);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new MensajeDTO(HttpStatus.CREATED, false, "Producto creado correctamente"));
+        System.err.println("2222222222222222222222222222222222222222222222K");
+        productoDTO.setImagenes(imagenesController.url);
+        return ResponseEntity.status(HttpStatus.CREATED).body( new MensajeDTO(HttpStatus.CREATED, false,
+                "el producto "+productoDTO.getNombre()+" se creo exitosamente") );
     }
     @PutMapping("/actualizar/{codigoProducto}")
     public ResponseEntity<MensajeDTO> actualizarProducto(@PathVariable int codigoProducto, @Valid @RequestBody ProductoDTO productoDTO) throws Exception{
@@ -37,10 +44,11 @@ public class ProductoController {
     public ResponseEntity<MensajeDTO> obtener(@PathVariable int codigoProducto) throws Exception{
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.obtener(codigoProducto)));
     }
-    @GetMapping("/listarProductoUsuario/{codigoUsuario}")
-    public ResponseEntity<MensajeDTO> listarProductosUsuario(@PathVariable int codigoUsuario){
-        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.listarProductosUsuario(codigoUsuario)));
-    }
+   // @GetMapping("/listarProductoUsuario/{codigoUsuario}")
+   // public ResponseEntity<MensajeDTO> listarProductosUsuario(@PathVariable String codigoUsuario){
+   //     return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.listarProductosUsuario(codigoUsuario)));
+   // }
+
     @GetMapping("/listarProductosCategoria/{categoria}")
     public ResponseEntity<MensajeDTO> listarProductosCategoria(@PathVariable Categoria categoria){
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.listarProductosCategoria(categoria)));
@@ -49,7 +57,10 @@ public class ProductoController {
     public ResponseEntity<MensajeDTO> listarProductosEstado(@PathVariable Estado estado){
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.listarProductosEstado(estado)));
     }
-
+    @GetMapping("misproductos/{correoUsuario}")
+    public ResponseEntity<MensajeDTO> listarProductosUsuario(@PathVariable String correoUsuario) throws Exception{
+        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK,false, productoServicio.listarProductosUsuario(correoUsuario)));
+    }
     @GetMapping("/listarProductos")
     public ResponseEntity<MensajeDTO> listarProductos(){
             Estado estado= Estado.AUTORIZADOS;
@@ -82,6 +93,13 @@ public class ProductoController {
     public ResponseEntity<MensajeDTO> listarCategorias(){
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, productoServicio.listarCategorias()));
     }
-
+    @GetMapping("/categorias")
+    public ResponseEntity<Categoria[]> getCategorias() {
+        return ResponseEntity.status(HttpStatus.OK).body( Categoria.values());
+    }
+    @GetMapping("cedula/{emailUsuario}")
+    public ResponseEntity<MensajeDTO> cedulaUsuario(@PathVariable String emailUsuario) throws Exception{
+        return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false, usuarioServicio.cedulaUsuario(emailUsuario)));
+    }
 
 }

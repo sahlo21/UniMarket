@@ -165,4 +165,17 @@ public class UsuarioServicioImpl implements UsuarioServicio {
 
         return usuario;
     }
+    @Override
+    public int cedulaUsuario(String cedulaUsuario) throws Exception{
+        return convertir( obtenerCedula(cedulaUsuario)).getCodigo();
+    }
+    public Usuario obtenerCedula(String cedulaUsuario) throws Exception{
+        Optional<Usuario> usuario = usuarioRepo.findByEmail(cedulaUsuario);
+
+        if(usuario.isEmpty() ){
+            throw new Exception("El email "+cedulaUsuario+" no está asociado a ningún usuario");
+        }
+
+        return usuario.get();
+    }
 }
