@@ -46,9 +46,9 @@ public class UsuarioController {
         usuarioServicio.cambiarContrasenaRecuperada(emailPerson,contrasenaDTO);
         return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, "Contrasenia cambiada correctamente"));
     }
-    @PostMapping("/recuperarContrasena/{usuarioEmailDTO}")
-    public ResponseEntity<MensajeDTO> recuperarContrasena(@PathVariable String usuarioEmailDTO) throws Exception{
+    @PostMapping("/recuperarContrasena")
+    public ResponseEntity<MensajeDTO> recuperatePassword(@RequestBody String usuarioEmailDTO) throws Exception{
         usuarioServicio.recuperarContrasena(usuarioEmailDTO);
-        return ResponseEntity.status(HttpStatus.OK).body(new MensajeDTO(HttpStatus.OK, false, "Correo enviado correctamente"));
+        return ResponseEntity.status(HttpStatus.OK).body( new MensajeDTO(HttpStatus.OK, false,"Correo de recuperacion de contraseña enviado con exito"));
     }
 }

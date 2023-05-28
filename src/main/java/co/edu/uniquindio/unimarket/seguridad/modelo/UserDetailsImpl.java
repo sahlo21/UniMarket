@@ -1,6 +1,6 @@
 package co.edu.uniquindio.unimarket.seguridad.modelo;
 
-import co.edu.uniquindio.unimarket.modelo.entidades.Persona;
+import co.edu.uniquindio.unimarket.modelo.dto.CompraDTO;
 import co.edu.uniquindio.unimarket.modelo.entidades.Moderador;
 import co.edu.uniquindio.unimarket.modelo.entidades.Usuario;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.List;
 public class UserDetailsImpl implements UserDetails {
     private String username, password;
     private Collection<? extends GrantedAuthority> authorities;
-    public static UserDetailsImpl build(Persona user){
+    public static UserDetailsImpl build(CompraDTO.Persona user){
         List<GrantedAuthority> authorities = new ArrayList<>();
         if(user instanceof Usuario){
             authorities.add( new SimpleGrantedAuthority("CLIENTE") );

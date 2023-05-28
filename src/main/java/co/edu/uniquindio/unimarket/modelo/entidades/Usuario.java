@@ -1,5 +1,6 @@
 package co.edu.uniquindio.unimarket.modelo.entidades;
 
+import co.edu.uniquindio.unimarket.modelo.dto.CompraDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,7 +12,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Usuario extends Persona implements Serializable  {
+public class Usuario extends CompraDTO.Persona implements Serializable  {
     @Column(nullable = true, length = 10)
     private String telefono;
     @Column(nullable = false, length = 100)

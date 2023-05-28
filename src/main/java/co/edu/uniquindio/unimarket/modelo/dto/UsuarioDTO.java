@@ -25,7 +25,7 @@ public class UsuarioDTO {
     @NotNull
     @NotBlank
     @Length(max = 50, message = "La contrasena debe tener maximo 50 caracteres")
-    private String contrasena;
+    private String password;
 
     @NotNull
     @NotBlank

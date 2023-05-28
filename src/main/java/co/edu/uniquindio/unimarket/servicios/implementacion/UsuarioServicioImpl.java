@@ -161,7 +161,7 @@ public class UsuarioServicioImpl implements UsuarioServicio {
         usuario.setEmail( usuarioDTO.getEmail() );
         usuario.setDireccion( usuarioDTO.getDireccion() );
         usuario.setTelefono( usuarioDTO.getTelefono() );
-        usuario.setContrasena( passwordEncoder.encode( usuarioDTO.getContrasena()));
+        usuario.setContrasena( passwordEncoder.encode( usuarioDTO.getPassword()));
 
         return usuario;
     }

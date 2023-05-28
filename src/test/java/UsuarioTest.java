@@ -36,7 +36,7 @@ import org.springframework.test.context.jdbc.Sql;
 
         //Se espera que si se registra correctamente entonces el servicio no debe retornar 0
         Assertions.assertNotEquals(0, codigo);
-        System.err.println("usuario: "+usuarioDTO.getContrasena()+ usuarioDTO.getNombre()+ usuarioDTO.getEmail()+usuarioDTO.getDireccion()+usuarioDTO.getTelefono());
+        System.err.println("usuario: "+usuarioDTO.getPassword()+ usuarioDTO.getNombre()+ usuarioDTO.getEmail()+usuarioDTO.getDireccion()+usuarioDTO.getTelefono());
 
     }
         @Test

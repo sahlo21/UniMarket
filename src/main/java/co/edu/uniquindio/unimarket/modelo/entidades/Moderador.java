@@ -1,9 +1,9 @@
 package co.edu.uniquindio.unimarket.modelo.entidades;
 
 
+import co.edu.uniquindio.unimarket.modelo.dto.CompraDTO;
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.annotation.Id;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Moderador extends Persona implements Serializable {
+public class Moderador extends CompraDTO.Persona implements Serializable {
     @OneToMany(mappedBy = "moderador")
     private List<ProductoModerado> productoModeradoList;
 
